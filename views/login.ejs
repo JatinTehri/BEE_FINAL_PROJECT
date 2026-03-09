@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="brand">
+            <i class="fas fa-tshirt brand-icon"></i>
+            <h1>Vybe</h1>
+            <p>Your Premium Fashion Destination</p>
+        </div>
+
+        <div class="auth-card">
+
+            <div class="tab-switcher">
+                <a href="/" class="tab-btn active"
+                    style="text-decoration: none; text-align: center; display: inline-block; width: 50%;">Login</a>
+                <a href="/signup" class="tab-btn"
+                    style="text-decoration: none; text-align: center; display: inline-block; width: 50%;">Sign Up</a>
+                <div class="tab-indicator"></div>
+            </div>
+
+            <% if (locals.error) { %>
+                <div class="message error show" style="color: #ff4757; text-align: center; margin-bottom: 10px;">
+                    <%= error %>
+                </div>
+                <% } %>
+                    <% if (locals.success) { %>
+                        <div class="message success show"
+                            style="color: #2ed573; text-align: center; margin-bottom: 10px;">
+                            <%= success %>
+                        </div>
+                        <% } %>
+
+                            <form id="loginForm" action="/login" method="POST" class="auth-form active">
+                                <h2>Welcome Back!</h2>
+                                <p class="form-subtitle">Login to access your style collection</p>
+
+                                <div class="input-group">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" name="loginEmail" id="loginEmail" placeholder="Email Address"
+                                        required>
+                                </div>
+
+                                <div class="input-group">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" name="loginPassword" id="loginPassword"
+                                        placeholder="Password" required>
+                                    <i class="fas fa-eye toggle-password" data-target="loginPassword"></i>
+                                </div>
+
+                                <div class="form-options">
+                                    <label class="remember-me">
+                                        <input type="checkbox" name="rememberMe" id="rememberMe">
+                                        <span class="checkmark"></span>
+                                        Remember me
+                                    </label>
+                                    <a href="#" class="forgot-link">Forgot Password?</a>
+                                </div>
+
+                                <button type="submit" class="auth-btn">
+                                    <span>Login</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </form>
+
+        </div>
+    </div>
+
+    <script src="/js/script2.js"></script>
+</body>
+
+</html>

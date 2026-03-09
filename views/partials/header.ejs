@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="nav-container">
+
+<!-- LOGO -->
+<a href="/" class="nav-logo">
+    <img src="/images/logo.jpeg" alt="Vybe Logo" class="logo-img">
+</a>
+
+<ul class="nav-menu">
+    <li><a href="/men" class="nav-links">MEN</a></li>
+    <li><a href="/women" class="nav-links">WOMEN</a></li>
+    <li><a href="/kids" class="nav-links">KIDS</a></li>
+    <li><a href="/home-living" class="nav-links">HOME & LIVING</a></li>
+    <li><a href="/beauty" class="nav-links">BEAUTY</a></li>
+</ul>
+
+<div class="nav-icons">
+
+    <!-- Search -->
+    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+
+    <!-- Profile -->
+    <% if (user) { %>
+        <span class="user-name">
+            <i class="fa-solid fa-user"></i> <%= user %>
+        </span>
+    <% } else { %>
+        <a href="/login">
+            <i class="fa-regular fa-user"></i>
+        </a>
+    <% } %>
+
+    <!-- Wishlist -->
+    <a href="/wishlist"><i class="fa-regular fa-heart"></i></a>
+
+    <!-- Cart -->
+    <a href="/cart" class="cart-icon">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+    </a>
+
+</div>
+
+</div>
+</nav>

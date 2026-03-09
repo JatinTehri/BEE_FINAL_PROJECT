@@ -1,0 +1,515 @@
+/* ============ THEME VARIABLES ============ */
+:root {
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+    --accent-color: #ff3f6c;
+    /* Myntra-style pink/red */
+    --text-main: #282c3f;
+    --text-muted: #696b79;
+    --bg-light: #f5f5f6;
+    --border-color: #d4d5d9;
+    --transition: all 0.3s ease;
+}
+
+/* ============ RESET & BASE ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-light);
+    /* Swapped to light background */
+    padding: 20px;
+    overflow-x: hidden;
+    color: var(--text-main);
+}
+
+/* Removed the floating orb animation as it conflicts with a clean retail aesthetic */
+
+/* ============ CONTAINER ============ */
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 460px;
+}
+
+/* ============ BRAND ============ */
+.brand {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeInDown 0.8s ease;
+}
+
+.brand-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.brand h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.brand p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============ AUTH CARD ============ */
+.auth-card {
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    /* Sharper corners for e-commerce look */
+    padding: 40px 35px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============ TAB SWITCHER ============ */
+.tab-switcher {
+    display: flex;
+    position: relative;
+    background: var(--bg-light);
+    border-radius: 6px;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.tab-btn.active {
+    color: var(--secondary-color);
+}
+
+.tab-indicator {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: calc(50% - 5px);
+    height: calc(100% - 10px);
+    background: var(--accent-color);
+    border-radius: 4px;
+    transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1;
+}
+
+.tab-indicator.right {
+    transform: translateX(100%);
+}
+
+/* ============ FORMS ============ */
+.auth-form {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-form h2 {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.form-subtitle {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+}
+
+/* ============ INPUT GROUP ============ */
+.input-group {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-group>i:first-child {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 45px 14px 46px;
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.input-group input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.input-group input:focus~i:first-child,
+.input-group input:focus+i {
+    color: var(--primary-color);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--accent-color);
+}
+
+/* ============ PASSWORD STRENGTH ============ */
+.password-strength {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 2px;
+    transition: all 0.4s ease;
+}
+
+.strength-text {
+    font-size: 0.7rem;
+    font-weight: 600;
+    min-width: 50px;
+    text-align: right;
+    color: var(--text-muted);
+}
+
+/* ============ FORM OPTIONS ============ */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+    font-size: 0.82rem;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+}
+
+.remember-me input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+    background: var(--secondary-color);
+}
+
+.remember-me input:checked+.checkmark {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.remember-me input:checked+.checkmark::after {
+    content: '✓';
+    color: var(--secondary-color);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.forgot-link {
+    color: var(--accent-color);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.forgot-link:hover {
+    opacity: 0.8;
+}
+
+.terms {
+    margin-bottom: 22px;
+}
+
+.terms a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ============ AUTH BUTTON ============ */
+.auth-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    /* Sharper corners */
+    background: var(--accent-color);
+    color: var(--secondary-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.auth-btn:hover {
+    background: #e0355f;
+    /* Slightly darker shade of accent on hover */
+    box-shadow: 0 4px 12px rgba(255, 63, 108, 0.2);
+}
+
+/* ============ DIVIDER ============ */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+    gap: 15px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.divider span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+/* ============ SOCIAL LOGIN ============ */
+.social-login {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-btn {
+    width: 55px;
+    height: 55px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--secondary-color);
+    color: var(--text-main);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.social-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+
+/* Tablets */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .brand h1 {
+        font-size: 1.8rem;
+    }
+
+    .brand-icon {
+        font-size: 2rem;
+    }
+
+    .auth-card {
+        padding: 30px 25px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        padding-top: 30px;
+    }
+
+    .brand {
+        margin-bottom: 20px;
+    }
+
+    .brand h1 {
+        font-size: 1.6rem;
+    }
+
+    .brand p {
+        font-size: 0.72rem;
+    }
+
+    .auth-card {
+        padding: 25px 20px;
+    }
+
+    .tab-btn {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .auth-form h2 {
+        font-size: 1.25rem;
+    }
+
+    .input-group input {
+        padding: 12px 40px 12px 42px;
+        font-size: 0.85rem;
+    }
+
+    .auth-btn {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .social-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1rem;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+    .auth-card {
+        padding: 20px 15px;
+    }
+
+    .social-login {
+        gap: 10px;
+    }
+
+    .social-btn {
+        width: 44px;
+        height: 44px;
+    }
+}
