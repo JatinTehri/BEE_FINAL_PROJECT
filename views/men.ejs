@@ -1,8 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Men | VYBE</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
 <%- include('partials/header') %>
 
 <main>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.35)), url('https://i.pinimg.com/1200x/c4/bd/53/c4bd53ed9573ff79abfb4bbe8718b113.jpg');">
 <div class="hero-content">
 <p class="hero-subtitle">New Collection 2026</p>
@@ -11,28 +25,22 @@
 </div>
 </section>
 
-
 <!-- TOPWEAR -->
 <section class="section-padding">
-
-<div class="section-title">
-<h2>Premium Topwear</h2>
-<div class="underline"></div>
-</div>
-
+<div class="section-title"><h2>Premium Topwear</h2><div class="underline"></div></div>
 <div class="product-grid">
 
 <div class="product-card"><div class="product-image"><img src="https://saluteni.com/wp-content/uploads/2023/07/OS-Tee-White-Back-Half-Design-3.png"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">White Oversized Tee</div><div class="product-price">₹999</div></div></div>
 
 <div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/45/a1/b5/45a1b55431a137c538e630c10f7cf78e.png"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Black Casual Shirt</div><div class="product-price">₹1299</div></div></div>
+
 <div class="product-card"><div class="product-image"><img src="https://i5.walmartimages.com/seo/RYDCOT-Men-s-Denim-Jackets-Slim-Fit-Long-Sleeve-Button-Down-Distressed-Jean-Trucker-Jacket-Fall-Fashion-Pockets-Clearance_d834f484-7c87-4cf8-83b7-af7eb0034740.c67f74f88bf10c3c794e484467600047.jpeg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Denim Jacket</div><div class="product-price">₹2499</div></div></div>
 
 <div class="product-card"><div class="product-image"><img src="https://img.abercrombie.com/is/image/anf/KIC_122-3567-1302-400_prod1?policy=product-large"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Classic Hoodie</div><div class="product-price">₹2199</div></div></div>
+
 <div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/736x/c4/8c/87/c48c8769496cadefa2ff262fd367d95c.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Graphic Street Tee</div><div class="product-price">₹1199</div></div></div>
 
 <div class="product-card"><div class="product-image"><img src="https://www.repertoirefashion.co.uk/images/polo-ralph-lauren-mens-blue-white-slim-fit-striped-oxford-shirt-p40667-234525_medium.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Slim Fit Oxford Shirt</div><div class="product-price">₹1799</div></div></div>
-
-
 
 <div class="product-card"><div class="product-image"><img src="http://www.dauletapparel.com/cdn/shop/products/S1ab53e0b20d84b07b9839a050b119ab1F.jpg?v=1665415094&width=2048"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Streetwear Hoodie</div><div class="product-price">₹2299</div></div></div>
 
@@ -44,8 +52,6 @@
 
 </div>
 </section>
-
-
 <!-- BOTTOMWEAR -->
 <section class="section-padding" style="background-color: var(--bg-light);">
 
@@ -78,7 +84,6 @@
 
 </div>
 </section>
-
 <!-- OUTERWEAR -->
 <section class="section-padding">
 
@@ -111,6 +116,8 @@
 
 </div>
 </section>
+
+<!-- ACTIVEWEAR FIX BUG -->
 <!-- ACTIVEWEAR -->
 <section class="section-padding" style="background-color: var(--bg-light);">
 
@@ -137,13 +144,28 @@
 
 <div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/76/ea/41/76ea4159e0e799baba437832e4109b52.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Gym Hoodie</div><div class="product-price">₹1999</div></div></div>
 
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/5c/89/50/5c895037e427f74ab72f65058f7afde5.jpg"><button class="add-to-cart auth-required">Add to Bag</button>/div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Workout Tee</div><div class="product-price">₹899</div></div></div>
+<!-- ✅ FIXED CARD -->
+<div class="product-card">
+<div class="product-image">
+<img src="https://i.pinimg.com/originals/5c/89/50/5c895037e427f74ab72f65058f7afde5.jpg">
+<button class="add-to-cart auth-required">Add to Bag</button>
+</div>
+<div class="product-info">
+<div class="brand">VYBE</div>
+<div class="product-name">Workout Tee</div>
+<div class="product-price">₹899</div>
+</div>
+</div>
 
 <div class="product-card"><div class="product-image"><img src="https://images.prodirectsport.com/ProductImages/Main/241979_Main_0883355.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Training Jacket</div><div class="product-price">₹2299</div></div></div>
 
 </div>
 </section>
-<!-- ETHNIC WEAR --><button class="add-to-cart auth-required">Add to Bag</button>"section-title">
+
+<!-- ETHNIC WEAR -->
+<section class="section-padding">
+
+<div class="section-title">
 <h2>Ethnic Wear</h2>
 <div class="underline"></div>
 </div>
@@ -176,26 +198,16 @@
 </main>
 
 <%- include('partials/footer') %>
-<!-- <script>
+
+<!-- LOGIN FIX -->
+<script>
 document.addEventListener("DOMContentLoaded", function(){
 
-    const buttons = document.querySelectorAll(".add-to-cart");
+    const isLoggedIn = <%= user ? true : false %>;
 
-    buttons.forEach(btn => {
-        btn.addEventListener("click", function(){
-            window.location.href = "/login";
-        });
-    });
+    const buttons = document.querySelectorAll(".auth-required");
 
-});
-</script> -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
-
-    document.querySelectorAll(".auth-required").forEach(function(btn){
-
+    buttons.forEach(function(btn){
         btn.addEventListener("click", function(e){
 
             if(!isLoggedIn){
@@ -205,8 +217,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
         });
-
     });
 
 });
 </script>
+</body>
+</html>

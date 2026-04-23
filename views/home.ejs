@@ -25,6 +25,7 @@
 
 <!-- HEADER -->
 <%- include('partials/header') %>
+<div id="userData" data-loggedin="<%= user ? 'true' : 'false' %>"></div>
 
 <!-- HERO SECTION -->
 
@@ -101,7 +102,7 @@ Sustainable, stylish, and made for you.
 
 <div class="category-overlay">
 <h3>Men</h3>
-<a href="#" class="btn-secondary auth-required">Explore</a>
+<a href="/men" class="btn-secondary auth-required">Explore</a>
 </div>
 
 </div>
@@ -112,7 +113,7 @@ Sustainable, stylish, and made for you.
 
 <div class="category-overlay">
 <h3>Women</h3>
-<a href="#" class="btn-secondary auth-required">Explore</a>
+<a href="/women" class="btn-secondary auth-required">Explore</a>
 </div>
 
 </div>
@@ -123,7 +124,7 @@ Sustainable, stylish, and made for you.
 
 <div class="category-overlay">
 <h3>Kids</h3>
-<a href="#" class="btn-secondary auth-required">Explore</a>
+<a href="/kids" class="btn-secondary auth-required">Explore</a>
 </div>
 
 </div>
@@ -314,12 +315,14 @@ Sustainable, stylish, and made for you.
 </div>
 
 
-<!-- LOGIN CHECK SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    // ✅ SAFELY GET USER LOGIN STATUS
+    const userEl = document.getElementById("userData");
+    const isLoggedIn = userEl && userEl.dataset.loggedin === "true";
 
+    // ✅ HANDLE ALL AUTH-REQUIRED BUTTONS
     document.querySelectorAll(".auth-required").forEach(function(btn){
 
         btn.addEventListener("click", function(e){
@@ -336,7 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
-
 
 <!-- MAIN SCRIPT -->
 <!-- <script src="/js/script.js"></script> -->

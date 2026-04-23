@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= title %>
-    </title>
+    <title><%= title %></title>
+
     <link rel="stylesheet" href="/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -25,71 +24,38 @@
         <div class="auth-card">
 
             <div class="tab-switcher">
-                <a href="/" class="tab-btn"
+                <a href="/login" class="tab-btn"
                     style="text-decoration: none; text-align: center; display: inline-block; width: 50%;">Login</a>
+
                 <a href="/signup" class="tab-btn active"
                     style="text-decoration: none; text-align: center; display: inline-block; width: 50%;">Sign Up</a>
+
                 <div class="tab-indicator right"></div>
             </div>
 
             <% if (locals.error) { %>
-                <div class="message error show" style="color: #ff4757; text-align: center; margin-bottom: 10px;">
+                <div style="color: red; text-align:center; margin-bottom:10px;">
                     <%= error %>
                 </div>
-                <% } %>
+            <% } %>
 
-                    <form id="signupForm" action="/signup" method="POST" class="auth-form active">
-                        <h2>Create Account</h2>
-                        <p class="form-subtitle">Join Vybe for exclusive fashion deals</p>
+            <form action="/signup" method="POST" enctype="multipart/form-data">
 
-                        <div class="input-group">
-                            <i class="fas fa-user"></i>
-                            <input type="text" name="signupName" id="signupName" placeholder="Full Name" required>
-                        </div>
+<h2>Create Account</h2>
 
-                        <div class="input-group">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" name="signupEmail" id="signupEmail" placeholder="Email Address"
-                                required>
-                        </div>
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="text" name="username" placeholder="Username" required>
 
-                        <div class="input-group">
-                            <i class="fas fa-phone"></i>
-                            <input type="tel" name="signupPhone" id="signupPhone" placeholder="Phone Number" required>
-                        </div>
+<input type="password" name="password" placeholder="Password" required>
+<input type="password" name="confirmPassword" placeholder="Confirm Password" required>
 
-                        <div class="input-group">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" name="signupPassword" id="signupPassword" placeholder="Password"
-                                required>
-                            <i class="fas fa-eye toggle-password" data-target="signupPassword"></i>
-                        </div>
+<label>Upload Profile Pic:</label>
+<input type="file" name="profilePic" accept="image/*" required>
 
-                        <div class="password-strength">
-                            <div class="strength-bar">
-                                <div class="strength-fill" id="strengthFill"></div>
-                            </div>
-                            <span class="strength-text" id="strengthText"></span>
-                        </div>
+<button type="submit">Signup</button>
 
-                        <div class="input-group">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" name="signupConfirmPassword" id="signupConfirmPassword"
-                                placeholder="Confirm Password" required>
-                            <i class="fas fa-eye toggle-password" data-target="signupConfirmPassword"></i>
-                        </div>
-
-                        <label class="remember-me terms">
-                            <input type="checkbox" name="agreeTerms" id="agreeTerms" required>
-                            <span class="checkmark"></span>
-                            I agree to the <a href="#">Terms &amp; Conditions</a>
-                        </label>
-
-                        <button type="submit" class="auth-btn signup-btn">
-                            <span>Create Account</span>
-                            <i class="fas fa-user-plus"></i>
-                        </button>
-                    </form>
+</form>
 
         </div>
     </div>

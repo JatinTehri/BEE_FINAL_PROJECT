@@ -1,184 +1,319 @@
+require("dotenv").config();
+
 const express = require("express");
-const fs = require("fs");
 const path = require("path");
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const multer = require("multer");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+
+// 🔥 GOOGLE LOGIN
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const session = require("express-session");
+
+const User = require("./models/User");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-const DATA_FILE = path.join(__dirname, "users.json");
+// ============================
+// MIDDLEWARE
+// ============================
 
-// store logged user
-let currentUser = null;
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.use("/uploads", express.static("uploads"));
+app.use(cookieParser());
 
-// View engine
+// 🔥 SESSION (ONLY FOR GOOGLE)
+app.use(session({
+    secret: "googleAuthSecret",
+    resave: false,
+    saveUninitialized: false
+}));
+
+// 🔥 PASSPORT INIT
+app.use(passport.initialize());
+app.use(passport.session());
+
+// ============================
+// VIEW ENGINE
+// ============================
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+// ============================
+// MULTER
+// ============================
 
-// Logger middleware
-app.use((req, res, next) => {
-    const time = new Date().toLocaleTimeString();
-    console.log(`[${time}] ${req.method} request to: ${req.url}`);
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "uploads/");
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + "-" + file.originalname);
+    }
+});
+
+const upload = multer({ storage });
+
+// ============================
+// DATABASE
+// ============================
+
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.log(err));
+
+// ============================
+// GOOGLE STRATEGY
+// ============================
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
+},
+async (accessToken, refreshToken, profile, done) => {
+    try {
+        let user = await User.findOne({ googleId: profile.id });
+
+        if (!user) {
+            user = await User.create({
+                googleId: profile.id,
+                name: profile.displayName,
+                email: profile.emails[0].value,
+                username: profile.emails[0].value,
+                profilePic: profile.photos[0].value
+            });
+        }
+
+        return done(null, user);
+
+    } catch (err) {
+        return done(err, null);
+    }
+}));
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    const user = await User.findById(id);
+    done(null, user);
+});
+
+// ============================
+// JWT AUTH MIDDLEWARE
+// ============================
+
+const authMiddleware = (req, res, next) => {
+    const token = req.cookies.token;
+
+    if (!token) return res.redirect("/login");
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded;
+        next();
+    } catch {
+        return res.redirect("/login");
+    }
+};
+
+// ============================
+// GLOBAL USER (FOR HEADER)
+// ============================
+
+app.use(async (req, res, next) => {
+    const token = req.cookies.token;
+
+    if (!token) {
+        res.locals.user = null;
+        return next();
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const user = await User.findById(decoded.id);
+
+        res.locals.user = user || null;
+
+    } catch {
+        res.locals.user = null;
+    }
+
     next();
 });
 
-// make user available to all EJS templates
-app.use((req, res, next) => {
-    res.locals.user = currentUser;
-    next();
-});
-
 // ============================
-// Helper Function
+// ROUTES
 // ============================
 
-function readUsers() {
-    if (fs.existsSync(DATA_FILE)) {
-        const data = fs.readFileSync(DATA_FILE, "utf-8");
-        if (!data) return [];
-        return JSON.parse(data);
-    }
-    return [];
-}
-
-// ============================
-// AUTH ROUTES
-// ============================
-
-// Login Page
-app.get("/login", (req, res) => {
-    res.render("login", { title: "Login", error: null, success: null });
-});
-
-// Signup Page
-app.get("/signup", (req, res) => {
-    res.render("signup", { title: "Signup", error: null, success: null });
-});
-
-// Handle Signup
-app.post("/signup", (req, res) => {
-
-    const { signupName, signupEmail, signupPhone, signupPassword, signupConfirmPassword } = req.body;
-
-    if (signupPassword !== signupConfirmPassword) {
-        return res.render("signup", {
-            title: "Signup",
-            error: "Passwords do not match!",
-            success: null
-        });
-    }
-
-    let users = readUsers();
-
-    const existingUser = users.find(u => u.email === signupEmail);
-
-    if (existingUser) {
-        return res.render("signup", {
-            title: "Signup",
-            error: "Email already exists!",
-            success: null
-        });
-    }
-
-    const newUser = {
-        id: Date.now().toString(),
-        name: signupName,
-        email: signupEmail,
-        phone: signupPhone,
-        pwd: signupPassword
-    };
-
-    users.push(newUser);
-
-    fs.writeFileSync(DATA_FILE, JSON.stringify(users, null, 2));
-
-    res.render("login", {
-        title: "Login",
-        error: null,
-        success: "Account created successfully! Please login."
-    });
-
-});
-
-// Handle Login
-app.post("/login", (req, res) => {
-
-    const email = req.body.loginEmail;
-    const pwd = req.body.loginPassword;
-
-    const users = readUsers();
-
-    const user = users.find(u => u.email === email && u.pwd === pwd);
-
-    if (user) {
-
-        // save logged user
-        currentUser = user.name;
-
-        res.redirect("/");
-
-    } else {
-
-        res.render("login", {
-            title: "Login",
-            error: "Invalid email or password!",
-            success: null
-        });
-
-    }
-
-});
-
-// Logout
-app.get("/logout", (req, res) => {
-    currentUser = null;
-    res.redirect("/");
-});
-
-// ============================
-// WEBSITE PAGES
-// ============================
-
-// Home
+// HOME
 app.get("/", (req, res) => {
     res.render("home", { title: "Home Page" });
 });
 
-// Men
-app.get("/men", (req, res) => {
-    res.render("men", { title: "Men Collection" });
+// LOGIN
+app.get("/login", (req, res) => {
+    res.render("login", { title: "Login", error: null, success: null });
 });
 
-// Women
-app.get("/women", (req, res) => {
-    res.render("women", { title: "Women Collection" });
-});
-
-// Kids
-app.get("/kids", (req, res) => {
-    res.render("kids", { title: "Kids Collection" });
-});
-
-// Home Living
-app.get("/home-living", (req, res) => {
-    res.render("home-living", { title: "Home & Living" });
-});
-
-// Beauty
-app.get("/beauty", (req, res) => {
-    res.render("beauty", { title: "Beauty" });
+// SIGNUP
+app.get("/signup", (req, res) => {
+    res.render("signup", { title: "Signup", error: null });
 });
 
 // ============================
-// 404 PAGE
+// GOOGLE LOGIN ROUTES
 // ============================
 
-app.use((req, res) => {
-    res.status(404).send("<h1>404 Page Not Found</h1>");
+// 🔥 START GOOGLE LOGIN
+app.get("/auth/google",
+    passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+// 🔥 GOOGLE CALLBACK
+app.get("/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/login" }),
+    async (req, res) => {
+
+        // ✅ CREATE JWT
+        const token = jwt.sign(
+            { id: req.user._id },
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
+        );
+
+        res.cookie("token", token, {
+            httpOnly: true
+        });
+
+        res.redirect("/");
+    }
+);
+
+// ============================
+// SIGNUP
+// ============================
+
+app.post("/signup", upload.single("profilePic"), async (req, res) => {
+
+    const { name, email, username, password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+        return res.render("signup", {
+            title: "Signup",
+            error: "Passwords do not match!"
+        });
+    }
+
+    try {
+        const existingUser = await User.findOne({
+            $or: [{ email }, { username }]
+        });
+
+        if (existingUser) {
+            return res.render("signup", {
+                title: "Signup",
+                error: "Email or Username already exists!"
+            });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = new User({
+            name,
+            email,
+            username,
+            password: hashedPassword,
+            profilePic: req.file ? req.file.filename : null
+        });
+
+        await newUser.save();
+
+        res.render("login", {
+            title: "Login",
+            success: "Account created successfully!",
+            error: null
+        });
+
+    } catch (err) {
+        console.log(err);
+        res.send("Error occurred");
+    }
 });
+
+// ============================
+// NORMAL LOGIN (JWT)
+// ============================
+
+app.post("/login", async (req, res) => {
+
+    const { username, password } = req.body;
+
+    try {
+        const user = await User.findOne({ username });
+
+        if (!user) {
+            return res.render("login", {
+                title: "Login",
+                error: "User not found!",
+                success: null
+            });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.render("login", {
+                title: "Login",
+                error: "Wrong password!",
+                success: null
+            });
+        }
+
+        const token = jwt.sign(
+            { id: user._id },
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
+        );
+
+        res.cookie("token", token, {
+            httpOnly: true
+        });
+
+        res.redirect("/");
+
+    } catch (err) {
+        console.log(err);
+        res.send("Error occurred");
+    }
+});
+
+// ============================
+// LOGOUT
+// ============================
+
+app.get("/logout", (req, res) => {
+    res.clearCookie("token");
+    res.redirect("/");
+});
+
+// ============================
+// PROTECTED ROUTES
+// ============================
+
+app.get("/men", authMiddleware, (req, res) => res.render("men"));
+app.get("/women", authMiddleware, (req, res) => res.render("women"));
+app.get("/kids", authMiddleware, (req, res) => res.render("kids"));
+app.get("/beauty", authMiddleware, (req, res) => res.render("beauty"));
+app.get("/home-living", authMiddleware, (req, res) => res.render("home-living"));
 
 // ============================
 // SERVER

@@ -1,7 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home & Living | VYBE</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
 <%- include('partials/header') %>
 
 <main>
 
+<!-- HERO -->
 <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.3)), url('https://png.pngtree.com/background/20230626/original/pngtree-male-formalwear-and-dresses-displayed-in-mall-storefront-3d-render-picture-image_4056416.jpg');">
 <div class="hero-content">
 <p class="hero-subtitle">Comfort & Lifestyle</p>
@@ -38,7 +53,6 @@
 
 </div>
 </section>
-
 <!-- SLEEPWEAR -->
 
 <section class="section-padding" style="background-color: var(--bg-light);">
@@ -96,6 +110,7 @@
 
 </div>
 </section>
+
 
 <!-- WINTER WEAR -->
 
@@ -158,3 +173,27 @@
 </main>
 
 <%- include('partials/footer') %>
+
+<!-- LOGIN FIX -->
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const isLoggedIn = <%= user ? true : false %>;
+
+    document.querySelectorAll(".auth-required").forEach(function(btn){
+        btn.addEventListener("click", function(e){
+
+            if(!isLoggedIn){
+                e.preventDefault();
+                alert("Please login first to continue.");
+                window.location.href = "/login";
+            }
+
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>

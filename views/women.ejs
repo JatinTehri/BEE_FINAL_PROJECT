@@ -1,11 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Women | VYBE</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
 <%- include('partials/header') %>
 
 <main>
 
 <!-- HERO -->
-
-<section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.3)), url('https://i.pinimg.com/originals/16/be/05/16be05d672b4da505d38cad34b1e2ddf.jpg');">
+<section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.35)), url('https://i.pinimg.com/originals/16/be/05/16be05d672b4da505d38cad34b1e2ddf.jpg');">
 <div class="hero-content">
+<p class="hero-subtitle">New Collection 2026</p>
 <h1 class="hero-title">WOMEN'S STYLE</h1>
 <p class="hero-description">Elegance in every stitch.</p>
 </div>
@@ -39,6 +53,7 @@
 
 </div>
 </section>
+
 <!-- TOPS -->
 <section class="section-padding" style="background-color: var(--bg-light);">
 
@@ -171,6 +186,8 @@
 
 </div>
 </section>
+
+
 <!-- JEANS --><!-- JEANS -->
 <section class="section-padding">
 
@@ -332,7 +349,6 @@
 
 </div>
 </section>
-
 <!-- JEWELRY -->
 
 <section class="section-padding">
@@ -366,3 +382,27 @@
 </main>
 
 <%- include('partials/footer') %>
+
+<!-- LOGIN FIX (SAME AS MEN) -->
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const isLoggedIn = <%= user ? true : false %>;
+
+    document.querySelectorAll(".auth-required").forEach(function(btn){
+        btn.addEventListener("click", function(e){
+
+            if(!isLoggedIn){
+                e.preventDefault();
+                alert("Please login first to continue.");
+                window.location.href = "/login";
+            }
+
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>
