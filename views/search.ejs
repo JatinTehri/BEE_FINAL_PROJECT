@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search | VYBE</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<%- include('partials/header') %>
+
+<main class="search-results-page">
+    <section class="section-padding">
+        <div class="section-title">
+            <h2>Search Results</h2>
+            <div class="underline"></div>
+        </div>
+
+        <% if (query) { %>
+            <p class="search-query">
+                Showing results for "<strong><%= query %></strong>" (<%= results.length %>)
+            </p>
+        <% } else { %>
+            <p class="search-query">Type in the search bar to find products.</p>
+        <% } %>
+
+        <% if (results.length) { %>
+            <div class="product-grid">
+                <% results.forEach((product) => { %>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="<%= product.image %>" alt="<%= product.name %>">
+                        </div>
+                        <div class="product-info">
+                            <div class="brand"><%= product.brand %></div>
+                            <div class="product-name"><%= product.name %></div>
+                            <div class="product-price"><%= product.price %></div>
+                            <div class="search-result-meta"><%= product.category %></div>
+                            <a class="search-result-link" href="<%= product.route %>">View Category</a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else if (query) { %>
+            <p class="search-empty">No products found. Try a different keyword.</p>
+        <% } %>
+    </section>
+</main>
+
+<%- include('partials/footer') %>
