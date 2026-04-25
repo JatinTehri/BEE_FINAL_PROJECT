@@ -530,8 +530,7 @@ app.post("/api/cart/quantity", cartRateLimiter, apiAuthMiddleware, sameOriginGua
 app.get("/cart", cartRateLimiter, authMiddleware, async (req, res) => {
     try {
         const items = await Cart.find({ userId: String(req.user.id) }).sort({ createdAt: -1 });
-        const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-        const totalAmount = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const { itemCount: totalItems, totalAmount } = await getCartSummary(req.user.id);
 
         res.render("cart", {
             items,

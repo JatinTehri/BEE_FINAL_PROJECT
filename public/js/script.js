@@ -240,7 +240,7 @@ if (cartItemsList) {
                 } else {
                     const quantityValue = itemCard?.querySelector(".cart-quantity-value");
                     const subtotalElement = itemCard?.querySelector(".cart-item-subtotal");
-                    const itemPrice = Number(itemCard?.dataset?.price || 0);
+                    const itemPrice = Number(itemCard?.dataset.price || 0);
 
                     if (quantityValue) {
                         quantityValue.textContent = String(data.quantity || 1);
