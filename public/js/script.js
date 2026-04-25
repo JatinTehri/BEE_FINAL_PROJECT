@@ -46,7 +46,30 @@ const applyWishlistIconState = (icon, isAdded) => {
     icon.style.color = isAdded ? "#ff3f6c" : "";
 };
 
+const ensureWishlistIcons = () => {
+    document.querySelectorAll(".product-card .product-image").forEach((productImage) => {
+        if (productImage.querySelector(".wishlist-icon")) return;
+
+        const wishlistContainer = document.createElement("div");
+        wishlistContainer.className = "wishlist-icon auth-required";
+
+        const icon = document.createElement("i");
+        icon.className = "fa-regular fa-heart";
+
+        wishlistContainer.appendChild(icon);
+
+        const addToCartButton = productImage.querySelector(".add-to-cart");
+        if (addToCartButton) {
+            productImage.insertBefore(wishlistContainer, addToCartButton);
+            return;
+        }
+
+        productImage.appendChild(wishlistContainer);
+    });
+};
+
 const syncWishlistIcons = () => {
+    ensureWishlistIcons();
     document.querySelectorAll(".wishlist-icon").forEach((wishlistContainer) => {
         const icon = wishlistContainer.querySelector("i");
         if (!icon) return;
@@ -226,6 +249,12 @@ const toggleWishlist = async (product) => {
 
     return data;
 };
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", syncWishlistIcons, { once: true });
+} else {
+    syncWishlistIcons();
+}
 
 const loadWishlistItems = async () => {
     if (!isLoggedIn) {
