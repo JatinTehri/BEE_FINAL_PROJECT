@@ -249,7 +249,11 @@ const toggleWishlist = async (product) => {
     return data;
 };
 
-ensureWishlistIcons();
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", ensureWishlistIcons, { once: true });
+} else {
+    ensureWishlistIcons();
+}
 
 const loadWishlistItems = async () => {
     if (!isLoggedIn) {
