@@ -461,6 +461,60 @@ app.get("/api/cart/items", cartRateLimiter, apiAuthMiddleware, async (req, res) 
     }
 });
 
+app.post("/api/cart/quantity", cartRateLimiter, apiAuthMiddleware, sameOriginGuard, async (req, res) => {
+    try {
+        const { productKey, delta } = req.body;
+
+        if (
+            typeof productKey !== "string" ||
+            !productKey.trim() ||
+            typeof delta !== "number" ||
+            !Number.isInteger(delta) ||
+            ![-1, 1].includes(delta)
+        ) {
+            return res.status(400).json({ success: false, message: "Invalid quantity update data" });
+        }
+
+        const safeProductKey = productKey.trim().slice(0, PRODUCT_KEY_MAX_LENGTH);
+        const existingItem = await Cart.findOne({
+            userId: String(req.user.id),
+            productKey: safeProductKey
+        });
+
+        if (!existingItem) {
+            return res.status(404).json({ success: false, message: "Cart item not found" });
+        }
+
+        const nextQuantity = existingItem.quantity + delta;
+
+        if (nextQuantity <= 0) {
+            await existingItem.deleteOne();
+        } else {
+            existingItem.quantity = nextQuantity;
+            await existingItem.save();
+        }
+
+        const cartItems = await Cart.find({ userId: String(req.user.id) });
+        const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+        return res.json({
+            success: true,
+            itemCount,
+            totalAmount,
+            removed: nextQuantity <= 0,
+            quantity: nextQuantity > 0 ? nextQuantity : 0
+        });
+    } catch (err) {
+        console.error("Cart quantity update error:", {
+            userId: req.user?.id,
+            productKey: req.body?.productKey,
+            error: err.message
+        });
+        return res.status(500).json({ success: false, message: "Failed to update cart quantity" });
+    }
+});
+
 app.get("/cart", cartRateLimiter, authMiddleware, async (req, res) => {
     try {
         const items = await Cart.find({ userId: String(req.user.id) }).sort({ createdAt: -1 });

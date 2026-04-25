@@ -57,6 +57,27 @@ const loadCartSummary = async () => {
     }
 };
 
+const updateCartQuantity = async (productKey, delta) => {
+    const response = await fetch("/api/cart/quantity", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ productKey, delta })
+    });
+
+    if (response.status === 401) {
+        redirectToLogin();
+        return null;
+    }
+
+    if (!response.ok) {
+        throw new Error("Failed to update quantity");
+    }
+
+    return response.json();
+};
+
 const addToCart = async (product) => {
     const response = await fetch("/api/cart/add", {
         method: "POST",
@@ -173,6 +194,33 @@ if (searchIcon) {
     searchIcon.addEventListener("click", () => {
         searchInput?.classList.toggle("active");
         searchInput?.focus();
+    });
+}
+
+const cartItemsList = document.querySelector(".cart-items-list");
+if (cartItemsList) {
+    cartItemsList.addEventListener("click", async (event) => {
+        const targetButton = event.target.closest(".cart-qty-btn");
+        if (!targetButton) return;
+
+        const itemCard = targetButton.closest(".cart-item-card");
+        const productKey = itemCard?.dataset?.productKey;
+        if (!productKey) return;
+
+        const delta = targetButton.classList.contains("cart-increase-btn") ? 1 : -1;
+
+        targetButton.disabled = true;
+        try {
+            const data = await updateCartQuantity(productKey, delta);
+            if (data?.success) {
+                updateCartCountBadge(data.itemCount);
+                window.location.reload();
+            }
+        } catch {
+            alert("Unable to update quantity. Please try again.");
+        } finally {
+            targetButton.disabled = false;
+        }
     });
 }
 
