@@ -340,14 +340,6 @@ app.post("/login", async (req, res) => {
 
     const { username, password } = req.body;
 
-    if (!STRONG_PASSWORD_REGEX.test(password)) {
-        return res.render("login", {
-            title: "Login",
-            error: STRONG_PASSWORD_ERROR,
-            success: null
-        });
-    }
-
     try {
         const user = await User.findOne({ username });
 
