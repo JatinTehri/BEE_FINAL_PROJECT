@@ -1,225 +1,942 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Men | VYBE</title>
 
-<link rel="stylesheet" href="/css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men | VYBE</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
-<%- include('partials/header') %>
+    <%- include('partials/header') %>
+
+        <main>
+
+            <!-- HERO -->
+            <section class="hero"
+                style="background-image: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.35)), url('https://i.pinimg.com/1200x/c4/bd/53/c4bd53ed9573ff79abfb4bbe8718b113.jpg');">
+                <div class="hero-content">
+                    <p class="hero-subtitle">New Collection 2026</p>
+                    <h1 class="hero-title">MEN'S FASHION</h1>
+                    <p class="hero-description">Discover premium styles for every occasion.</p>
+                </div>
+            </section>
+
+            <!-- TOPWEAR -->
+            <section class="section-padding">
+                <div class="section-title">
+                    <h2>Premium Topwear</h2>
+                    <div class="underline"></div>
+                </div>
+                <div class="product-grid">
+
+                    <div class="product-card" data-product-id="1" data-product-name="White Oversized Tee"
+                        data-product-price="999"
+                        data-product-image="https://saluteni.com/wp-content/uploads/2023/07/OS-Tee-White-Back-Half-Design-3.png">
+                        <div class="product-image"><img
+                                src="https://saluteni.com/wp-content/uploads/2023/07/OS-Tee-White-Back-Half-Design-3.png"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">White Oversized Tee</div>
+                            <div class="product-price">₹999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="2" data-product-name="Black Casual Shirt"
+                        data-product-price="1299"
+                        data-product-image="https://i.pinimg.com/originals/45/a1/b5/45a1b55431a137c538e630c10f7cf78e.png">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/originals/45/a1/b5/45a1b55431a137c538e630c10f7cf78e.png"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Black Casual Shirt</div>
+                            <div class="product-price">₹1299</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="3" data-product-name="Denim Jacket"
+                        data-product-price="2499"
+                        data-product-image="https://i5.walmartimages.com/seo/RYDCOT-Men-s-Denim-Jackets-Slim-Fit-Long-Sleeve-Button-Down-Distressed-Jean-Trucker-Jacket-Fall-Fashion-Pockets-Clearance_d834f484-7c87-4cf8-83b7-af7eb0034740.c67f74f88bf10c3c794e484467600047.jpeg">
+                        <div class="product-image"><img
+                                src="https://i5.walmartimages.com/seo/RYDCOT-Men-s-Denim-Jackets-Slim-Fit-Long-Sleeve-Button-Down-Distressed-Jean-Trucker-Jacket-Fall-Fashion-Pockets-Clearance_d834f484-7c87-4cf8-83b7-af7eb0034740.c67f74f88bf10c3c794e484467600047.jpeg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Denim Jacket</div>
+                            <div class="product-price">₹2499</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="4" data-product-name="Classic Hoodie"
+                        data-product-price="2199"
+                        data-product-image="https://img.abercrombie.com/is/image/anf/KIC_122-3567-1302-400_prod1?policy=product-large">
+                        <div class="product-image"><img
+                                src="https://img.abercrombie.com/is/image/anf/KIC_122-3567-1302-400_prod1?policy=product-large"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Classic Hoodie</div>
+                            <div class="product-price">₹2199</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="5" data-product-name="Graphic Street Tee"
+                        data-product-price="1199"
+                        data-product-image="https://i.pinimg.com/736x/c4/8c/87/c48c8769496cadefa2ff262fd367d95c.jpg">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/736x/c4/8c/87/c48c8769496cadefa2ff262fd367d95c.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Graphic Street Tee</div>
+                            <div class="product-price">₹1199</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="6" data-product-name="Slim Fit Oxford Shirt"
+                        data-product-price="1799"
+                        data-product-image="https://www.repertoirefashion.co.uk/images/polo-ralph-lauren-mens-blue-white-slim-fit-striped-oxford-shirt-p40667-234525_medium.jpg">
+                        <div class="product-image"><img
+                                src="https://www.repertoirefashion.co.uk/images/polo-ralph-lauren-mens-blue-white-slim-fit-striped-oxford-shirt-p40667-234525_medium.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Slim Fit Oxford Shirt</div>
+                            <div class="product-price">₹1799</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="7" data-product-name="Streetwear Hoodie"
+                        data-product-price="2299"
+                        data-product-image="http://www.dauletapparel.com/cdn/shop/products/S1ab53e0b20d84b07b9839a050b119ab1F.jpg?v=1665415094&width=2048">
+                        <div class="product-image"><img
+                                src="http://www.dauletapparel.com/cdn/shop/products/S1ab53e0b20d84b07b9839a050b119ab1F.jpg?v=1665415094&width=2048"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Streetwear Hoodie</div>
+                            <div class="product-price">₹2299</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="8" data-product-name="Casual Summer Shirt"
+                        data-product-price="1499"
+                        data-product-image="https://i.pinimg.com/originals/60/fb/47/60fb476c0cbf36633eb43511cd747a7f.jpg">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/originals/60/fb/47/60fb476c0cbf36633eb43511cd747a7f.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Casual Summer Shirt</div>
+                            <div class="product-price">₹1499</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="9" data-product-name="Printed Resort Shirt"
+                        data-product-price="1399"
+                        data-product-image="https://api.etonshirts.com/v1/retail/image/1620/bynder/d32d2256-e071-4c26-9cf5-8b0baa3b3ea2/light-green-palm-tree-resort-shirt_2024-03-07T13155017Z.webp">
+                        <div class="product-image"><img
+                                src="https://api.etonshirts.com/v1/retail/image/1620/bynder/d32d2256-e071-4c26-9cf5-8b0baa3b3ea2/light-green-palm-tree-resort-shirt_2024-03-07T13155017Z.webp"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Printed Resort Shirt</div>
+                            <div class="product-price">₹1399</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="10" data-product-name="Formal Slim Shirt"
+                        data-product-price="1899"
+                        data-product-image="https://images.nexusapp.co/assets/1e/1b/83/100026487.jpg">
+                        <div class="product-image"><img
+                                src="https://images.nexusapp.co/assets/1e/1b/83/100026487.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Formal Slim Shirt</div>
+                            <div class="product-price">₹1899</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- BOTTOMWEAR -->
+            <section class="section-padding" style="background-color: var(--bg-light);">
+                <div class="section-title">
+                    <h2>Essential Bottomwear</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="product-grid">
+
+                    <div class="product-card" data-product-id="11" data-product-name="Relaxed Fit Denim"
+                        data-product-price="2499"
+                        data-product-image="https://images.unsplash.com/photo-1542272604-787c3835535d">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1542272604-787c3835535d"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Relaxed Fit Denim</div>
+                            <div class="product-price">₹2499</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="12" data-product-name="Bell Bottom Jeans"
+                        data-product-price="2299"
+                        data-product-image="https://cdn.shopify.com/s/files/1/2148/0159/products/lcjflreindigo1_530x@2x.jpg?v=1577395496">
+                        <div class="product-image"><img
+                                src="https://cdn.shopify.com/s/files/1/2148/0159/products/lcjflreindigo1_530x@2x.jpg?v=1577395496"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Bell Bottom Jeans</div>
+                            <div class="product-price">₹2299</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="13" data-product-name="Cotton Chinos"
+                        data-product-price="1999"
+                        data-product-image="https://image.hm.com/assets/hm/05/ea/05eaf4f96d11a3cb3ef7124aeaf4a94f6c9260a3.jpg?imwidth=2160">
+                        <div class="product-image"><img
+                                src="https://image.hm.com/assets/hm/05/ea/05eaf4f96d11a3cb3ef7124aeaf4a94f6c9260a3.jpg?imwidth=2160"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Cotton Chinos</div>
+                            <div class="product-price">₹1999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="14" data-product-name="Cargo Pants"
+                        data-product-price="2199"
+                        data-product-image="https://i5.walmartimages.com/seo/Ayfxijin-Cargo-Pants-for-Men-Men-s-Fashion-Casual-Camouflage-Cargo-Pockets-dry-Tactics-Full-Length-Pants_f5f35fad-c8e1-4203-a07c-84611f0c8e99.f29614cbc7db4b25a9541c24005e2bbf.jpeg">
+                        <div class="product-image"><img
+                                src="https://i5.walmartimages.com/seo/Ayfxijin-Cargo-Pants-for-Men-Men-s-Fashion-Casual-Camouflage-Cargo-Pockets-dry-Tactics-Full-Length-Pants_f5f35fad-c8e1-4203-a07c-84611f0c8e99.f29614cbc7db4b25a9541c24005e2bbf.jpeg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Cargo Pants</div>
+                            <div class="product-price">₹2199</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="15" data-product-name="Jogger Pants"
+                        data-product-price="1699"
+                        data-product-image="https://i5.walmartimages.com/seo/Men-s-Slim-Fit-Stretch-Cargo-Jogger-Pants_c0f36440-1b83-4f65-8c53-19eec12bb98f_1.5923867b8858ded356b961ed5324419d.jpeg">
+                        <div class="product-image"><img
+                                src="https://i5.walmartimages.com/seo/Men-s-Slim-Fit-Stretch-Cargo-Jogger-Pants_c0f36440-1b83-4f65-8c53-19eec12bb98f_1.5923867b8858ded356b961ed5324419d.jpeg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Jogger Pants</div>
+                            <div class="product-price">₹1699</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="16" data-product-name="Classic Trousers"
+                        data-product-price="2099"
+                        data-product-image="https://www.jolliman.co.uk/csp/jol/web/products/opt3/800x1100/JA105.jpg?v=">
+                        <div class="product-image"><img
+                                src="https://www.jolliman.co.uk/csp/jol/web/products/opt3/800x1100/JA105.jpg?v="><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Classic Trousers</div>
+                            <div class="product-price">₹2099</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="17" data-product-name="Black Denim"
+                        data-product-price="2399"
+                        data-product-image="https://i.pinimg.com/originals/e5/e8/19/e5e81951d33122deda2d4c01bb32001b.png">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/originals/e5/e8/19/e5e81951d33122deda2d4c01bb32001b.png"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Black Denim</div>
+                            <div class="product-price">₹2399</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="18" data-product-name="Casual Khaki Pants"
+                        data-product-price="1999"
+                        data-product-image="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1689187848-63602_Flint_and_Tinder_365_Pant_-_slim_Khaki_01.jpg?crop=1xw:1xh;center,top&resize=980:*">
+                        <div class="product-image"><img
+                                src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1689187848-63602_Flint_and_Tinder_365_Pant_-_slim_Khaki_01.jpg?crop=1xw:1xh;center,top&resize=980:*"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Casual Khaki Pants</div>
+                            <div class="product-price">₹1999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="19" data-product-name="Grey Joggers"
+                        data-product-price="1599"
+                        data-product-image="https://images.bewakoof.com/original/men-s-grey-oversized-cargo-jogger-pants-609800-1724234157-1.jpg">
+                        <div class="product-image"><img
+                                src="https://images.bewakoof.com/original/men-s-grey-oversized-cargo-jogger-pants-609800-1724234157-1.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Grey Joggers</div>
+                            <div class="product-price">₹1599</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="20" data-product-name="Street Cargo"
+                        data-product-price="2199"
+                        data-product-image="https://i.etsystatic.com/25090033/r/il/49e34c/3009396454/il_fullxfull.3009396454_fs33.jpg">
+                        <div class="product-image"><img
+                                src="https://i.etsystatic.com/25090033/r/il/49e34c/3009396454/il_fullxfull.3009396454_fs33.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Street Cargo</div>
+                            <div class="product-price">₹2199</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- OUTERWEAR -->
+            <section class="section-padding">
+                <div class="section-title">
+                    <h2>Outerwear</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="product-grid">
+
+                    <div class="product-card" data-product-id="21" data-product-name="Winter Jacket"
+                        data-product-price="3999"
+                        data-product-image="https://m.media-amazon.com/images/I/81O9VmH2xvL._AC_SL1500_.jpg">
+                        <div class="product-image"><img
+                                src="https://m.media-amazon.com/images/I/81O9VmH2xvL._AC_SL1500_.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Winter Jacket</div>
+                            <div class="product-price">₹3999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="22" data-product-name="Leather Jacket"
+                        data-product-price="4999"
+                        data-product-image="https://i.pinimg.com/originals/fe/10/70/fe1070e05fc6bd377ef8df4b70610c9e.jpg">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/originals/fe/10/70/fe1070e05fc6bd377ef8df4b70610c9e.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Leather Jacket</div>
+                            <div class="product-price">₹4999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="23" data-product-name="Denim Jacket"
+                        data-product-price="3499"
+                        data-product-image="https://images-na.ssl-images-amazon.com/images/I/71ltVJH47%2BL._AC_UL1335_.jpg">
+                        <div class="product-image"><img
+                                src="https://images-na.ssl-images-amazon.com/images/I/71ltVJH47%2BL._AC_UL1335_.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Denim Jacket</div>
+                            <div class="product-price">₹3499</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="24" data-product-name="Bomber Jacket"
+                        data-product-price="3799"
+                        data-product-image="https://m.media-amazon.com/images/I/61ERl8U2SRL._AC_SL1423_.jpg">
+                        <div class="product-image"><img
+                                src="https://m.media-amazon.com/images/I/61ERl8U2SRL._AC_SL1423_.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Bomber Jacket</div>
+                            <div class="product-price">₹3799</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="25" data-product-name="Puffer Jacket"
+                        data-product-price="4299"
+                        data-product-image="https://i.pinimg.com/originals/38/f8/a7/38f8a7a21d837d6e0239e1d63edbf15a.jpg">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/originals/38/f8/a7/38f8a7a21d837d6e0239e1d63edbf15a.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Puffer Jacket</div>
+                            <div class="product-price">₹4299</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="26" data-product-name="Street Hoodie"
+                        data-product-price="2199"
+                        data-product-image="https://i.pinimg.com/originals/90/3b/a2/903ba2723f69f5a01ca7058b4cf63f5c.jpg">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/originals/90/3b/a2/903ba2723f69f5a01ca7058b4cf63f5c.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Street Hoodie</div>
+                            <div class="product-price">₹2199</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="27" data-product-name="Track Jacket"
+                        data-product-price="2599"
+                        data-product-image="https://clothbase.s3.amazonaws.com/uploads/82e4e091-8c00-452b-bca5-f1766eed3c80/image.jpg">
+                        <div class="product-image"><img
+                                src="https://clothbase.s3.amazonaws.com/uploads/82e4e091-8c00-452b-bca5-f1766eed3c80/image.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Track Jacket</div>
+                            <div class="product-price">₹2599</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="28" data-product-name="Winter Coat"
+                        data-product-price="4599"
+                        data-product-image="https://i5.walmartimages.com/seo/WXLWZYWL-Men-s-Long-Winter-Coat-Hooded-Cold-Weather-Padded-Windproof-Parka-Outwear-Hooded-Warm-Quilted-Skinny-Jacket_b2ad97bb-6af4-4371-90e6-ea7db01ee7a7.386129c08791101cf59c9be2b6546563.jpeg">
+                        <div class="product-image"><img
+                                src="https://i5.walmartimages.com/seo/WXLWZYWL-Men-s-Long-Winter-Coat-Hooded-Cold-Weather-Padded-Windproof-Parka-Outwear-Hooded-Warm-Quilted-Skinny-Jacket_b2ad97bb-6af4-4371-90e6-ea7db01ee7a7.386129c08791101cf59c9be2b6546563.jpeg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Winter Coat</div>
+                            <div class="product-price">₹4599</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="29" data-product-name="Urban Jacket"
+                        data-product-price="3899"
+                        data-product-image="https://www.sportsdirect.com/images/imgzoom/44/44206969_xxl.jpg">
+                        <div class="product-image"><img
+                                src="https://www.sportsdirect.com/images/imgzoom/44/44206969_xxl.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Urban Jacket</div>
+                            <div class="product-price">₹3899</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="30" data-product-name="Classic Coat"
+                        data-product-price="4199"
+                        data-product-image="https://i.pinimg.com/736x/f6/38/e4/f638e4f0aed27904bb95063aaa62c200.jpg">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/736x/f6/38/e4/f638e4f0aed27904bb95063aaa62c200.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Classic Coat</div>
+                            <div class="product-price">₹4199</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ACTIVEWEAR -->
+            <section class="section-padding" style="background-color: var(--bg-light);">
+                <div class="section-title">
+                    <h2>Activewear</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="product-grid">
+
+                    <div class="product-card" data-product-id="31" data-product-name="Gym Tank" data-product-price="999"
+                        data-product-image="http://www.ironpandafit.com/cdn/shop/files/jpg_077e77de-8bc6-4760-b255-96f6ce4dc2f5.jpg?v=1686722944">
+                        <div class="product-image"><img
+                                src="http://www.ironpandafit.com/cdn/shop/files/jpg_077e77de-8bc6-4760-b255-96f6ce4dc2f5.jpg?v=1686722944"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Gym Tank</div>
+                            <div class="product-price">₹999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="32" data-product-name="Training Shorts"
+                        data-product-price="1199"
+                        data-product-image="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/4a888971-b7ad-403a-adf9-1675cf71be3d/dri-fit-mens-knit-training-shorts-m1zfSZ.png">
+                        <div class="product-image"><img
+                                src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/4a888971-b7ad-403a-adf9-1675cf71be3d/dri-fit-mens-knit-training-shorts-m1zfSZ.png"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Training Shorts</div>
+                            <div class="product-price">₹1199</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="33" data-product-name="Sports Hoodie"
+                        data-product-price="1899"
+                        data-product-image="https://i5.walmartimages.com/seo/FAVIPT-Men-s-Hoodies-Full-Zip-up-Jacket-Pullover-Workout-Running-Active-Sport-Hoodies-with-Zipper-Pockets-Military-Tactical-Sweatshirt-2025-Navy-XL_074be66a-e904-49a9-ba72-c7b691b9d3db.f6f1587e68cbcd97cd95056ca7366907.jpeg">
+                        <div class="product-image"><img
+                                src="https://i5.walmartimages.com/seo/FAVIPT-Men-s-Hoodies-Full-Zip-up-Jacket-Pullover-Workout-Running-Active-Sport-Hoodies-with-Zipper-Pockets-Military-Tactical-Sweatshirt-2025-Navy-XL_074be66a-e904-49a9-ba72-c7b691b9d3db.f6f1587e68cbcd97cd95056ca7366907.jpeg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Sports Hoodie</div>
+                            <div class="product-price">₹1899</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="34" data-product-name="Running Tee"
+                        data-product-price="899"
+                        data-product-image="https://shop.shakhtar.com/images/detailed/20/52325301_6e01-f1.jpg">
+                        <div class="product-image"><img
+                                src="https://shop.shakhtar.com/images/detailed/20/52325301_6e01-f1.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Running Tee</div>
+                            <div class="product-price">₹899</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="35" data-product-name="Track Jacket"
+                        data-product-price="2199"
+                        data-product-image="https://hips.hearstapps.com/esq.h-cdn.co/assets/17/21/timcoppens.jpg?resize=980:*">
+                        <div class="product-image"><img
+                                src="https://hips.hearstapps.com/esq.h-cdn.co/assets/17/21/timcoppens.jpg?resize=980:*"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Track Jacket</div>
+                            <div class="product-price">₹2199</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="36" data-product-name="Training Tee"
+                        data-product-price="799"
+                        data-product-image="https://tse4.mm.bing.net/th/id/OIP.eLIHDceQtFThpcLST5WyZwHaHa?pid=Api&P=0&h=180">
+                        <div class="product-image"><img
+                                src="https://tse4.mm.bing.net/th/id/OIP.eLIHDceQtFThpcLST5WyZwHaHa?pid=Api&P=0&h=180"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Training Tee</div>
+                            <div class="product-price">₹799</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="37" data-product-name="Athletic Shorts"
+                        data-product-price="999"
+                        data-product-image="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Athletic Shorts</div>
+                            <div class="product-price">₹999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="38" data-product-name="Gym Hoodie"
+                        data-product-price="1999"
+                        data-product-image="https://i.pinimg.com/originals/76/ea/41/76ea4159e0e799baba437832e4109b52.jpg">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/originals/76/ea/41/76ea4159e0e799baba437832e4109b52.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Gym Hoodie</div>
+                            <div class="product-price">₹1999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="39" data-product-name="Workout Tee"
+                        data-product-price="899"
+                        data-product-image="https://i.pinimg.com/originals/5c/89/50/5c895037e427f74ab72f65058f7afde5.jpg">
+                        <div class="product-image"><img
+                                src="https://i.pinimg.com/originals/5c/89/50/5c895037e427f74ab72f65058f7afde5.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Workout Tee</div>
+                            <div class="product-price">₹899</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="40" data-product-name="Training Jacket"
+                        data-product-price="2299"
+                        data-product-image="https://images.prodirectsport.com/ProductImages/Main/241979_Main_0883355.jpg">
+                        <div class="product-image"><img
+                                src="https://images.prodirectsport.com/ProductImages/Main/241979_Main_0883355.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Training Jacket</div>
+                            <div class="product-price">₹2299</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ETHNIC WEAR -->
+            <section class="section-padding">
+                <div class="section-title">
+                    <h2>Ethnic Wear</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="product-grid">
+
+                    <div class="product-card" data-product-id="41" data-product-name="Classic Kurta"
+                        data-product-price="1499"
+                        data-product-image="https://png.pngtree.com/png-vector/20241225/ourmid/pngtree-classic-red-long-kurta-for-men-png-image_14852153.png">
+                        <div class="product-image"><img
+                                src="https://png.pngtree.com/png-vector/20241225/ourmid/pngtree-classic-red-long-kurta-for-men-png-image_14852153.png"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Classic Kurta</div>
+                            <div class="product-price">₹1499</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="42" data-product-name="Kurta Pajama Set"
+                        data-product-price="2499"
+                        data-product-image="https://deshibesh.com/cdn/shop/products/father-son-combo-kurta-pajama-set-296310_1800x1800.jpg?v=1709974436">
+                        <div class="product-image"><img
+                                src="https://deshibesh.com/cdn/shop/products/father-son-combo-kurta-pajama-set-296310_1800x1800.jpg?v=1709974436"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Kurta Pajama Set</div>
+                            <div class="product-price">₹2499</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="43" data-product-name="Wedding Kurta"
+                        data-product-price="3999"
+                        data-product-image="https://pictures.kartmax.in/live/cover/600x800/sites/9s145MyZrWdIAwpU0JYS/product-images/elegant_pista_green_silk_kurta_pajama_1726033230as3056892_01.jpg">
+                        <div class="product-image"><img
+                                src="https://pictures.kartmax.in/live/cover/600x800/sites/9s145MyZrWdIAwpU0JYS/product-images/elegant_pista_green_silk_kurta_pajama_1726033230as3056892_01.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Wedding Kurta</div>
+                            <div class="product-price">₹3999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="44" data-product-name="Festive Kurta"
+                        data-product-price="1799"
+                        data-product-image="https://pictures.kartmax.in/cover/live/600x800/quality=6/sites/9s145MyZrWdIAwpU0JYS/product-images/cream_cotton_silk_festive_style_kurta_set_for_men_1730001713ks_6444_1.jpg">
+                        <div class="product-image"><img
+                                src="https://pictures.kartmax.in/cover/live/600x800/quality=6/sites/9s145MyZrWdIAwpU0JYS/product-images/cream_cotton_silk_festive_style_kurta_set_for_men_1730001713ks_6444_1.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Festive Kurta</div>
+                            <div class="product-price">₹1799</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="45" data-product-name="Nehru Jacket"
+                        data-product-price="2199"
+                        data-product-image="https://frenchcrown.in/cdn/shop/products/WC2205_1.jpg?v=1700654654&width=3600">
+                        <div class="product-image"><img
+                                src="https://frenchcrown.in/cdn/shop/products/WC2205_1.jpg?v=1700654654&width=3600"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Nehru Jacket</div>
+                            <div class="product-price">₹2199</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="46" data-product-name="Silk Kurta"
+                        data-product-price="3299"
+                        data-product-image="https://5.imimg.com/data5/UE/LA/ER/ANDROID-100082697/product-jpeg-500x500.jpg">
+                        <div class="product-image"><img
+                                src="https://5.imimg.com/data5/UE/LA/ER/ANDROID-100082697/product-jpeg-500x500.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Silk Kurta</div>
+                            <div class="product-price">₹3299</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="47" data-product-name="Traditional Kurta"
+                        data-product-price="1599"
+                        data-product-image="https://i.etsystatic.com/31794856/r/il/83da1f/5340221758/il_1080xN.5340221758_3qy9.jpg">
+                        <div class="product-image"><img
+                                src="https://i.etsystatic.com/31794856/r/il/83da1f/5340221758/il_1080xN.5340221758_3qy9.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Traditional Kurta</div>
+                            <div class="product-price">₹1599</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="48" data-product-name="Designer Kurta"
+                        data-product-price="2999"
+                        data-product-image="https://images.bewakoof.com/uploads/grid/app/kurta-designs-for-men-bewakoof-blog-7-1617168729.jpg">
+                        <div class="product-image"><img
+                                src="https://images.bewakoof.com/uploads/grid/app/kurta-designs-for-men-bewakoof-blog-7-1617168729.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Designer Kurta</div>
+                            <div class="product-price">₹2999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="49" data-product-name="Festive Jacket"
+                        data-product-price="2599"
+                        data-product-image="https://manyavar.scene7.com/is/image/manyavar/I02_IMGL8759_16-02-2022-18-48:650x900?&dpr=on,2">
+                        <div class="product-image"><img
+                                src="https://manyavar.scene7.com/is/image/manyavar/I02_IMGL8759_16-02-2022-18-48:650x900?&dpr=on,2"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Festive Jacket</div>
+                            <div class="product-price">₹2599</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="50" data-product-name="Royal Kurta"
+                        data-product-price="3499"
+                        data-product-image="https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/19500450/2022/8/13/9205795f-2db8-4539-b3b3-f3380e4cad6f1660394251845RoyalKurtaMensArtSilkEmbroideredKurta1.jpg">
+                        <div class="product-image"><img
+                                src="https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/19500450/2022/8/13/9205795f-2db8-4539-b3b3-f3380e4cad6f1660394251845RoyalKurtaMensArtSilkEmbroideredKurta1.jpg"><button
+                                class="add-to-cart auth-required">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Royal Kurta</div>
+                            <div class="product-price">₹3499</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <%- include('partials/footer') %>
+
+            <!-- CART SIDEBAR -->
+            <div class="cart-sidebar" id="cartSidebar">
+                <div class="cart-header">
+                    <h2>Your Bag</h2>
+                    <button class="close-cart" id="closeCart">&times;</button>
+                </div>
+                <div class="cart-items" id="cartItems">
+                    <div class="cart-empty">Your bag is empty</div>
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-summary">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">₹0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping:</span>
+                            <span id="shipping">₹0</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="total">₹0</span>
+                        </div>
+                    </div>
+                    <button class="checkout-btn" id="checkoutBtn" disabled>Proceed to Checkout</button>
+                </div>
+            </div>
+
+            <!-- JAVASCRIPT -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+
+                    const isLoggedIn = <%= user ? true : false %>;
+
+                    // ==================== AUTH REQUIRED ====================
+                    const authButtons = document.querySelectorAll(".auth-required");
+
+                    authButtons.forEach(function (btn) {
+                        btn.addEventListener("click", function (e) {
+                            if (!isLoggedIn) {
+                                e.preventDefault();
+                                alert("Please login first to continue.");
+                                window.location.href = "/login";
+                                return;
+                            }
+                        });
+                    });
+
+                    // ==================== CART SYSTEM ====================
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                    const cartSidebar = document.getElementById('cartSidebar');
+                    const closeCartBtn = document.getElementById('closeCart');
+                    const cartItemsContainer = document.getElementById('cartItems');
+                    const checkoutBtn = document.getElementById('checkoutBtn');
+
+                    // Function to update cart display
+                    function updateCartDisplay() {
+                        cartItemsContainer.innerHTML = '';
+
+                        if (cart.length === 0) {
+                            cartItemsContainer.innerHTML = '<div class="cart-empty">Your bag is empty</div>';
+                            checkoutBtn.disabled = true;
+                            updateCartSummary();
+                            return;
+                        }
+
+                        checkoutBtn.disabled = false;
+
+                        cart.forEach((item, index) => {
+                            const cartItem = document.createElement('div');
+                            cartItem.className = 'cart-item';
+                            cartItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">₹${item.price}</div>
+                    <div class="quantity-controls">
+                        <button data-index="${index}" class="decrease-qty">−</button>
+                        <span>${item.quantity}</span>
+                        <button data-index="${index}" class="increase-qty">+</button>
+                    </div>
+                </div>
+                <button data-index="${index}" class="remove-item">Remove</button>
+            `;
+                            cartItemsContainer.appendChild(cartItem);
+                        });
+
+                        // Add event listeners to quantity and remove buttons
+                        document.querySelectorAll('.increase-qty').forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                const index = e.target.dataset.index;
+                                cart[index].quantity++;
+                                updateCart();
+                            });
+                        });
+
+                        document.querySelectorAll('.decrease-qty').forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                const index = e.target.dataset.index;
+                                if (cart[index].quantity > 1) {
+                                    cart[index].quantity--;
+                                } else {
+                                    cart.splice(index, 1);
+                                }
+                                updateCart();
+                            });
+                        });
+
+                        document.querySelectorAll('.remove-item').forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                const index = e.target.dataset.index;
+                                cart.splice(index, 1);
+                                updateCart();
+                            });
+                        });
+
+                        updateCartSummary();
+                    }
+
+                    // Function to update cart summary
+                    function updateCartSummary() {
+                        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                        const shipping = subtotal > 0 ? (subtotal >= 9900 ? 0 : 100) : 0;
+                        const total = subtotal + shipping;
+
+                        document.getElementById('subtotal').textContent = '₹' + subtotal;
+                        document.getElementById('shipping').textContent = shipping === 0 ? 'Free' : '₹' + shipping;
+                        document.getElementById('total').textContent = '₹' + total;
+                    }
+
+                    // Function to update cart
+                    function updateCart() {
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCartDisplay();
+                    }
+
+                    // Add to cart functionality
+                    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+                    addToCartButtons.forEach(btn => {
+                        btn.addEventListener('click', function (e) {
+                            if (!isLoggedIn) return;
+
+                            e.preventDefault();
+
+                            const productCard = this.closest('.product-card');
+                            const productId = productCard.dataset.productId;
+                            const productName = productCard.dataset.productName;
+                            const productPrice = parseInt(productCard.dataset.productPrice);
+                            const productImage = productCard.dataset.productImage;
+
+                            if (!productId || !productName || !productPrice || !productImage) {
+                                alert('Product data missing. Please refresh the page.');
+                                return;
+                            }
+
+                            const existingItem = cart.find(item => item.id === productId);
+
+                            if (existingItem) {
+                                existingItem.quantity++;
+                            } else {
+                                cart.push({
+                                    id: productId,
+                                    name: productName,
+                                    price: productPrice,
+                                    image: productImage,
+                                    quantity: 1
+                                });
+                            }
+
+                            updateCart();
+                            alert('✓ Added to bag!');
+                            cartSidebar.classList.add('active');
+                        });
+                    });
+
+                    // Close cart sidebar
+                    closeCartBtn.addEventListener('click', () => {
+                        cartSidebar.classList.remove('active');
+                    });
+
+                    // Checkout button functionality
+                    checkoutBtn.addEventListener('click', () => {
+                        if (cart.length > 0) {
+                            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                            alert('Proceeding to checkout with items worth ₹' + total);
+                            // Redirect to checkout page
+                            // window.location.href = '/checkout';
+                        }
+                    });
+
+                    // Initial cart display
+                    updateCartDisplay();
+
+                });
+            </script>
 
-<main>
-
-<!-- HERO -->
-<section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.35)), url('https://i.pinimg.com/1200x/c4/bd/53/c4bd53ed9573ff79abfb4bbe8718b113.jpg');">
-<div class="hero-content">
-<p class="hero-subtitle">New Collection 2026</p>
-<h1 class="hero-title">MEN'S FASHION</h1>
-<p class="hero-description">Discover premium styles for every occasion.</p>
-</div>
-</section>
-
-<!-- TOPWEAR -->
-<section class="section-padding">
-<div class="section-title"><h2>Premium Topwear</h2><div class="underline"></div></div>
-<div class="product-grid">
-
-<div class="product-card"><div class="product-image"><img src="https://saluteni.com/wp-content/uploads/2023/07/OS-Tee-White-Back-Half-Design-3.png"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">White Oversized Tee</div><div class="product-price">₹999</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/45/a1/b5/45a1b55431a137c538e630c10f7cf78e.png"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Black Casual Shirt</div><div class="product-price">₹1299</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i5.walmartimages.com/seo/RYDCOT-Men-s-Denim-Jackets-Slim-Fit-Long-Sleeve-Button-Down-Distressed-Jean-Trucker-Jacket-Fall-Fashion-Pockets-Clearance_d834f484-7c87-4cf8-83b7-af7eb0034740.c67f74f88bf10c3c794e484467600047.jpeg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Denim Jacket</div><div class="product-price">₹2499</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://img.abercrombie.com/is/image/anf/KIC_122-3567-1302-400_prod1?policy=product-large"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Classic Hoodie</div><div class="product-price">₹2199</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/736x/c4/8c/87/c48c8769496cadefa2ff262fd367d95c.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Graphic Street Tee</div><div class="product-price">₹1199</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://www.repertoirefashion.co.uk/images/polo-ralph-lauren-mens-blue-white-slim-fit-striped-oxford-shirt-p40667-234525_medium.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Slim Fit Oxford Shirt</div><div class="product-price">₹1799</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="http://www.dauletapparel.com/cdn/shop/products/S1ab53e0b20d84b07b9839a050b119ab1F.jpg?v=1665415094&width=2048"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Streetwear Hoodie</div><div class="product-price">₹2299</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/60/fb/47/60fb476c0cbf36633eb43511cd747a7f.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Casual Summer Shirt</div><div class="product-price">₹1499</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://api.etonshirts.com/v1/retail/image/1620/bynder/d32d2256-e071-4c26-9cf5-8b0baa3b3ea2/light-green-palm-tree-resort-shirt_2024-03-07T13155017Z.webp"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Printed Resort Shirt</div><div class="product-price">₹1399</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://images.nexusapp.co/assets/1e/1b/83/100026487.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Formal Slim Shirt</div><div class="product-price">₹1899</div></div></div>
-
-</div>
-</section>
-<!-- BOTTOMWEAR -->
-<section class="section-padding" style="background-color: var(--bg-light);">
-
-<div class="section-title">
-<h2>Essential Bottomwear</h2>
-<div class="underline"></div>
-</div>
-
-<div class="product-grid">
-
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Relaxed Fit Denim</div><div class="product-price">₹2499</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://cdn.shopify.com/s/files/1/2148/0159/products/lcjflreindigo1_530x@2x.jpg?v=1577395496"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Bell Bottom Jeans</div><div class="product-price">₹2299</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://image.hm.com/assets/hm/05/ea/05eaf4f96d11a3cb3ef7124aeaf4a94f6c9260a3.jpg?imwidth=2160"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Cotton Chinos</div><div class="product-price">₹1999</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i5.walmartimages.com/seo/Ayfxijin-Cargo-Pants-for-Men-Men-s-Fashion-Casual-Camouflage-Cargo-Pockets-dry-Tactics-Full-Length-Pants_f5f35fad-c8e1-4203-a07c-84611f0c8e99.f29614cbc7db4b25a9541c24005e2bbf.jpeg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Cargo Pants</div><div class="product-price">₹2199</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i5.walmartimages.com/seo/Men-s-Slim-Fit-Stretch-Cargo-Jogger-Pants_c0f36440-1b83-4f65-8c53-19eec12bb98f_1.5923867b8858ded356b961ed5324419d.jpeg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Jogger Pants</div><div class="product-price">₹1699</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://www.jolliman.co.uk/csp/jol/web/products/opt3/800x1100/JA105.jpg?v="><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Classic Trousers</div><div class="product-price">₹2099</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/e5/e8/19/e5e81951d33122deda2d4c01bb32001b.png"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Black Denim</div><div class="product-price">₹2399</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1689187848-63602_Flint_and_Tinder_365_Pant_-_slim_Khaki_01.jpg?crop=1xw:1xh;center,top&resize=980:*"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Casual Khaki Pants</div><div class="product-price">₹1999</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://images.bewakoof.com/original/men-s-grey-oversized-cargo-jogger-pants-609800-1724234157-1.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Grey Joggers</div><div class="product-price">₹1599</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.etsystatic.com/25090033/r/il/49e34c/3009396454/il_fullxfull.3009396454_fs33.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Street Cargo</div><div class="product-price">₹2199</div></div></div>
-
-</div>
-</section>
-<!-- OUTERWEAR -->
-<section class="section-padding">
-
-<div class="section-title">
-<h2>Outerwear</h2>
-<div class="underline"></div>
-</div>
-
-<div class="product-grid">
-
-<div class="product-card"><div class="product-image"><img src="https://m.media-amazon.com/images/I/81O9VmH2xvL._AC_SL1500_.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Winter Jacket</div><div class="product-price">₹3999</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/fe/10/70/fe1070e05fc6bd377ef8df4b70610c9e.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Leather Jacket</div><div class="product-price">₹4999</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://images-na.ssl-images-amazon.com/images/I/71ltVJH47%2BL._AC_UL1335_.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Denim Jacket</div><div class="product-price">₹3499</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://m.media-amazon.com/images/I/61ERl8U2SRL._AC_SL1423_.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Bomber Jacket</div><div class="product-price">₹3799</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/38/f8/a7/38f8a7a21d837d6e0239e1d63edbf15a.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Puffer Jacket</div><div class="product-price">₹4299</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/90/3b/a2/903ba2723f69f5a01ca7058b4cf63f5c.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Street Hoodie</div><div class="product-price">₹2199</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://clothbase.s3.amazonaws.com/uploads/82e4e091-8c00-452b-bca5-f1766eed3c80/image.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Track Jacket</div><div class="product-price">₹2599</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i5.walmartimages.com/seo/WXLWZYWL-Men-s-Long-Winter-Coat-Hooded-Cold-Weather-Padded-Windproof-Parka-Outwear-Hooded-Warm-Quilted-Skinny-Jacket_b2ad97bb-6af4-4371-90e6-ea7db01ee7a7.386129c08791101cf59c9be2b6546563.jpeg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Winter Coat</div><div class="product-price">₹4599</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://www.sportsdirect.com/images/imgzoom/44/44206969_xxl.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Urban Jacket</div><div class="product-price">₹3899</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/736x/f6/38/e4/f638e4f0aed27904bb95063aaa62c200.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Classic Coat</div><div class="product-price">₹4199</div></div></div>
-
-</div>
-</section>
-
-<!-- ACTIVEWEAR FIX BUG -->
-<!-- ACTIVEWEAR -->
-<section class="section-padding" style="background-color: var(--bg-light);">
-
-<div class="section-title">
-<h2>Activewear</h2>
-<div class="underline"></div>
-</div>
-
-<div class="product-grid">
-
-<div class="product-card"><div class="product-image"><img src="http://www.ironpandafit.com/cdn/shop/files/jpg_077e77de-8bc6-4760-b255-96f6ce4dc2f5.jpg?v=1686722944"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Gym Tank</div><div class="product-price">₹999</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/4a888971-b7ad-403a-adf9-1675cf71be3d/dri-fit-mens-knit-training-shorts-m1zfSZ.png"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Training Shorts</div><div class="product-price">₹1199</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i5.walmartimages.com/seo/FAVIPT-Men-s-Hoodies-Full-Zip-up-Jacket-Pullover-Workout-Running-Active-Sport-Hoodies-with-Zipper-Pockets-Military-Tactical-Sweatshirt-2025-Navy-XL_074be66a-e904-49a9-ba72-c7b691b9d3db.f6f1587e68cbcd97cd95056ca7366907.jpeg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Sports Hoodie</div><div class="product-price">₹1899</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://shop.shakhtar.com/images/detailed/20/52325301_6e01-f1.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Running Tee</div><div class="product-price">₹899</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://hips.hearstapps.com/esq.h-cdn.co/assets/17/21/timcoppens.jpg?resize=980:*"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Track Jacket</div><div class="product-price">₹2199</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://tse4.mm.bing.net/th/id/OIP.eLIHDceQtFThpcLST5WyZwHaHa?pid=Api&P=0&h=180"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Training Tee</div><div class="product-price">₹799</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Athletic Shorts</div><div class="product-price">₹999</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.pinimg.com/originals/76/ea/41/76ea4159e0e799baba437832e4109b52.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Gym Hoodie</div><div class="product-price">₹1999</div></div></div>
-
-<!-- ✅ FIXED CARD -->
-<div class="product-card">
-<div class="product-image">
-<img src="https://i.pinimg.com/originals/5c/89/50/5c895037e427f74ab72f65058f7afde5.jpg">
-<button class="add-to-cart auth-required">Add to Bag</button>
-</div>
-<div class="product-info">
-<div class="brand">VYBE</div>
-<div class="product-name">Workout Tee</div>
-<div class="product-price">₹899</div>
-</div>
-</div>
-
-<div class="product-card"><div class="product-image"><img src="https://images.prodirectsport.com/ProductImages/Main/241979_Main_0883355.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Training Jacket</div><div class="product-price">₹2299</div></div></div>
-
-</div>
-</section>
-
-<!-- ETHNIC WEAR -->
-<section class="section-padding">
-
-<div class="section-title">
-<h2>Ethnic Wear</h2>
-<div class="underline"></div>
-</div>
-
-<div class="product-grid">
-
-<div class="product-card"><div class="product-image"><img src="https://png.pngtree.com/png-vector/20241225/ourmid/pngtree-classic-red-long-kurta-for-men-png-image_14852153.png"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Classic Kurta</div><div class="product-price">₹1499</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://deshibesh.com/cdn/shop/products/father-son-combo-kurta-pajama-set-296310_1800x1800.jpg?v=1709974436"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Kurta Pajama Set</div><div class="product-price">₹2499</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://pictures.kartmax.in/live/cover/600x800/sites/9s145MyZrWdIAwpU0JYS/product-images/elegant_pista_green_silk_kurta_pajama_1726033230as3056892_01.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Wedding Kurta</div><div class="product-price">₹3999</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://pictures.kartmax.in/cover/live/600x800/quality=6/sites/9s145MyZrWdIAwpU0JYS/product-images/cream_cotton_silk_festive_style_kurta_set_for_men_1730001713ks_6444_1.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Festive Kurta</div><div class="product-price">₹1799</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://frenchcrown.in/cdn/shop/products/WC2205_1.jpg?v=1700654654&width=3600"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Nehru Jacket</div><div class="product-price">₹2199</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://5.imimg.com/data5/UE/LA/ER/ANDROID-100082697/product-jpeg-500x500.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Silk Kurta</div><div class="product-price">₹3299</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://i.etsystatic.com/31794856/r/il/83da1f/5340221758/il_1080xN.5340221758_3qy9.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Traditional Kurta</div><div class="product-price">₹1599</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://images.bewakoof.com/uploads/grid/app/kurta-designs-for-men-bewakoof-blog-7-1617168729.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Designer Kurta</div><div class="product-price">₹2999</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://manyavar.scene7.com/is/image/manyavar/I02_IMGL8759_16-02-2022-18-48:650x900?&dpr=on,2"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Festive Jacket</div><div class="product-price">₹2599</div></div></div>
-
-<div class="product-card"><div class="product-image"><img src="https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/19500450/2022/8/13/9205795f-2db8-4539-b3b3-f3380e4cad6f1660394251845RoyalKurtaMensArtSilkEmbroideredKurta1.jpg"><button class="add-to-cart auth-required">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Royal Kurta</div><div class="product-price">₹3499</div></div></div>
-
-</div>
-</section>
-
-</main>
-
-<%- include('partials/footer') %>
-
-<!-- LOGIN FIX -->
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-
-    const isLoggedIn = <%= user ? true : false %>;
-
-    const buttons = document.querySelectorAll(".auth-required");
-
-    buttons.forEach(function(btn){
-        btn.addEventListener("click", function(e){
-
-            if(!isLoggedIn){
-                e.preventDefault();
-                alert("Please login first to continue.");
-                window.location.href = "/login";
-            }
-
-        });
-    });
-
-});
-</script>
 </body>
+
 </html>

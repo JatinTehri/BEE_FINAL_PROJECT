@@ -27,14 +27,13 @@ app.use(express.static("public"));
 app.use("/uploads", express.static("uploads"));
 app.use(cookieParser());
 
-// 🔥 SESSION (ONLY FOR GOOGLE)
+// 🔥 SESSION (only needed for Google)
 app.use(session({
     secret: "googleAuthSecret",
     resave: false,
     saveUninitialized: false
 }));
 
-// 🔥 PASSPORT INIT
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -50,12 +49,8 @@ app.set("views", path.join(__dirname, "views"));
 // ============================
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "uploads/");
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + "-" + file.originalname);
-    }
+    destination: (req, file, cb) => cb(null, "uploads/"),
+    filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname)
 });
 
 const upload = multer({ storage });
@@ -69,15 +64,16 @@ mongoose.connect(process.env.MONGO_URI)
 .catch(err => console.log(err));
 
 // ============================
-// GOOGLE STRATEGY
+// 🔥 GOOGLE STRATEGY (ONLY HERE)
 // ============================
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK_URL
+    callbackURL: "http://localhost:3000/auth/google/callback"
 },
 async (accessToken, refreshToken, profile, done) => {
+
     try {
         let user = await User.findOne({ googleId: profile.id });
 
@@ -98,9 +94,7 @@ async (accessToken, refreshToken, profile, done) => {
     }
 }));
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-});
+passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser(async (id, done) => {
     const user = await User.findById(id);
@@ -108,7 +102,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // ============================
-// JWT AUTH MIDDLEWARE
+// JWT AUTH
 // ============================
 
 const authMiddleware = (req, res, next) => {
@@ -140,9 +134,7 @@ app.use(async (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const user = await User.findById(decoded.id);
-
         res.locals.user = user || null;
-
     } catch {
         res.locals.user = null;
     }
@@ -159,40 +151,35 @@ app.get("/", (req, res) => {
     res.render("home", { title: "Home Page" });
 });
 
-// LOGIN
+// LOGIN PAGE
 app.get("/login", (req, res) => {
     res.render("login", { title: "Login", error: null, success: null });
 });
 
-// SIGNUP
+// SIGNUP PAGE
 app.get("/signup", (req, res) => {
     res.render("signup", { title: "Signup", error: null });
 });
 
 // ============================
-// GOOGLE LOGIN ROUTES
+// 🔥 GOOGLE LOGIN ROUTES
 // ============================
 
-// 🔥 START GOOGLE LOGIN
 app.get("/auth/google",
     passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-// 🔥 GOOGLE CALLBACK
 app.get("/auth/google/callback",
     passport.authenticate("google", { failureRedirect: "/login" }),
     async (req, res) => {
 
-        // ✅ CREATE JWT
         const token = jwt.sign(
             { id: req.user._id },
             process.env.JWT_SECRET,
             { expiresIn: "1d" }
         );
 
-        res.cookie("token", token, {
-            httpOnly: true
-        });
+        res.cookie("token", token, { httpOnly: true });
 
         res.redirect("/");
     }
@@ -284,9 +271,7 @@ app.post("/login", async (req, res) => {
             { expiresIn: "1d" }
         );
 
-        res.cookie("token", token, {
-            httpOnly: true
-        });
+        res.cookie("token", token, { httpOnly: true });
 
         res.redirect("/");
 

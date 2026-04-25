@@ -9,7 +9,9 @@
     <title>VYBE | Modern E-Commerce</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,331 +19,358 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
+
 </head>
 
 <body>
 
-<div id="container">
+    <div id="container">
 
-<!-- HEADER -->
-<%- include('partials/header') %>
-<div id="userData" data-loggedin="<%= user ? 'true' : 'false' %>"></div>
+        <!-- HEADER -->
+        <%- include('partials/header') %>
+            <div id="userData" data-loggedin="<%= user ? 'true' : 'false' %>"></div>
 
-<!-- HERO SECTION -->
+            <!-- HERO SECTION -->
 
-<header class="hero">
+            <header class="hero">
 
-<div class="hero-content">
+                <div class="hero-content">
 
-<h4 class="hero-subtitle">New Arrivals 2026</h4>
+                    <h4 class="hero-subtitle">New Arrivals 2026</h4>
 
-<h1 class="hero-title">
-The Spring <br> Collections
-</h1>
+                    <h1 class="hero-title">
+                        The Spring <br> Collections
+                    </h1>
 
-<p class="hero-description">
-Experience the elegance of minimalist design with our latest seasonal drop.
-Sustainable, stylish, and made for you.
-</p>
+                    <p class="hero-description">
+                        Experience the elegance of minimalist design with our latest seasonal drop.
+                        Sustainable, stylish, and made for you.
+                    </p>
 
-<a href="#" class="btn-primary auth-required">SHOP THE COLLECTION</a>
+                    <a href="#categories" class="btn-primary shop-collection">SHOP THE COLLECTION</a>
 
-</div>
+                </div>
 
-</header>
-
-
-<!-- TRUST BAR -->
-
-<section class="trust-bar">
-
-<div class="trust-container">
-
-<div class="trust-item">
-<i class="fa-solid fa-truck-fast"></i>
-<h4>Free Shipping</h4>
-<p>On all orders above $99</p>
-</div>
-
-<div class="trust-item">
-<i class="fa-solid fa-arrow-rotate-left"></i>
-<h4>Easy Returns</h4>
-<p>30-day return policy</p>
-</div>
-
-<div class="trust-item">
-<i class="fa-solid fa-lock"></i>
-<h4>Secure Payment</h4>
-<p>100% protected checkout</p>
-</div>
-
-<div class="trust-item">
-<i class="fa-solid fa-award"></i>
-<h4>Premium Quality</h4>
-<p>Certified fashion brands</p>
-</div>
-
-</div>
-
-</section>
+            </header>
 
 
-<!-- SHOP BY CATEGORY -->
+            <!-- TRUST BAR -->
 
-<section class="categories section-padding">
+            <section class="trust-bar">
 
-<div class="section-title">
-<h2>Shop by Category</h2>
-<div class="underline"></div>
-</div>
+                <div class="trust-container">
 
-<div class="category-grid">
+                    <div class="trust-item">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <h4>Free Shipping</h4>
+                        <p>On all orders above $99</p>
+                    </div>
 
-<div class="category-item">
-<img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=1964&q=80">
+                    <div class="trust-item">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                        <h4>Easy Returns</h4>
+                        <p>30-day return policy</p>
+                    </div>
 
-<div class="category-overlay">
-<h3>Men</h3>
-<a href="/men" class="btn-secondary auth-required">Explore</a>
-</div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-lock"></i>
+                        <h4>Secure Payment</h4>
+                        <p>100% protected checkout</p>
+                    </div>
 
-</div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-award"></i>
+                        <h4>Premium Quality</h4>
+                        <p>Certified fashion brands</p>
+                    </div>
 
+                </div>
 
-<div class="category-item">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2070&q=80">
-
-<div class="category-overlay">
-<h3>Women</h3>
-<a href="/women" class="btn-secondary auth-required">Explore</a>
-</div>
-
-</div>
+            </section>
 
 
-<div class="category-item">
-<img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=2070&q=80">
+            <!-- SHOP BY CATEGORY -->
 
-<div class="category-overlay">
-<h3>Kids</h3>
-<a href="/kids" class="btn-secondary auth-required">Explore</a>
-</div>
+            <section class="categories section-padding" id="categories">
 
-</div>
+                <div class="section-title">
+                    <h2>Shop by Category</h2>
+                    <div class="underline"></div>
+                </div>
 
-</div>
+                <div class="category-grid">
 
-</section>
-<section class="featured-collection section-padding">
+                    <div class="category-item">
+                        <img
+                            src="https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=1964&q=80">
 
-    <div class="section-title">
-        <h2>Seasonal Collections</h2>
-        <div class="underline"></div>
+                        <div class="category-overlay">
+                            <h3>Men</h3>
+                            <a href="/men" class="btn-secondary auth-required">Explore</a>
+                        </div>
+
+                    </div>
+
+
+                    <div class="category-item">
+                        <img
+                            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2070&q=80">
+
+                        <div class="category-overlay">
+                            <h3>Women</h3>
+                            <a href="/women" class="btn-secondary auth-required">Explore</a>
+                        </div>
+
+                    </div>
+
+
+                    <div class="category-item">
+                        <img
+                            src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=2070&q=80">
+
+                        <div class="category-overlay">
+                            <h3>Kids</h3>
+                            <a href="/kids" class="btn-secondary auth-required">Explore</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="featured-collection section-padding">
+
+                <div class="section-title">
+                    <h2>Seasonal Collections</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="collection-grid">
+
+                    <div class="collection-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=2052&q=80">
+
+                        <div class="collection-overlay">
+                            <h3>Denim Collection</h3>
+                            <a href="#categories" class="btn-secondary shop-collection">Shop Now</a>
+                        </div>
+                    </div>
+
+                    <div class="collection-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=2070&q=80">
+
+                        <div class="collection-overlay">
+                            <h3>Summer Essentials</h3>
+                            <a href="#categories" class="btn-secondary shop-collection">Shop Now</a>
+                        </div>
+                    </div>
+
+                    <div class="collection-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1887&q=80">
+
+                        <div class="collection-overlay">
+                            <h3>Street Style</h3>
+                            <a href="#categories" class="btn-secondary shop-collection">Shop Now</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- TRENDING PRODUCTS -->
+
+            <section class="products section-padding">
+
+                <div class="section-title">
+                    <h2>Trending Now</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="product-grid">
+
+                    <!-- PRODUCT 1 -->
+
+                    <div class="product-card">
+
+                        <div class="product-image">
+
+                            <img src="https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg">
+
+                            <div class="wishlist-icon auth-required">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+
+                            <button class="add-to-cart auth-required">Add to Bag</button>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h4 class="brand">VYBE EXCLUSIVE</h4>
+                            <p class="product-name">Tailored Wool Coat</p>
+
+                            <div class="product-price">
+                                <span class="curr-price">$129.00</span>
+                                <span class="old-price">$180.00</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 2 -->
+
+                    <div class="product-card">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1920&q=80">
+
+                            <div class="wishlist-icon auth-required">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+
+                            <button class="add-to-cart auth-required">Add to Bag</button>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h4 class="brand">URBAN VYBE</h4>
+                            <p class="product-name">Classic Yellow Set</p>
+
+                            <div class="product-price">
+                                <span class="curr-price">$89.00</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 3 -->
+
+                    <div class="product-card">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=1887&q=80">
+
+                            <div class="wishlist-icon auth-required">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+
+                            <button class="add-to-cart auth-required">Add to Bag</button>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h4 class="brand">VYBE ESSENTIALS</h4>
+                            <p class="product-name">Minimalist Linen Shirt</p>
+
+                            <div class="product-price">
+                                <span class="curr-price">$45.00</span>
+                                <span class="old-price">$60.00</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 4 -->
+
+                    <div class="product-card">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=1886&q=80">
+
+                            <div class="wishlist-icon auth-required">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+
+                            <button class="add-to-cart auth-required">Add to Bag</button>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h4 class="brand">VYBE LUXE</h4>
+                            <p class="product-name">High-Waisted Trousers</p>
+
+                            <div class="product-price">
+                                <span class="curr-price">$75.00</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <%- include('partials/footer') %>
+
     </div>
 
-    <div class="collection-grid">
 
-        <div class="collection-card">
-            <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=2052&q=80">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-            <div class="collection-overlay">
-                <h3>Denim Collection</h3>
-                <a href="/login" class="btn-secondary auth-required">Shop Now</a>
-            </div>
-        </div>
+            // ✅ SAFELY GET USER LOGIN STATUS
+            const userEl = document.getElementById("userData");
+            const isLoggedIn = userEl && userEl.dataset.loggedin === "true";
 
-        <div class="collection-card">
-            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=2070&q=80">
+            // ✅ HANDLE AUTH-REQUIRED BUTTONS (Category Explore & Add to Bag)
+            document.querySelectorAll(".auth-required").forEach(function (btn) {
 
-            <div class="collection-overlay">
-                <h3>Summer Essentials</h3>
-                <a href="/login" class="btn-secondary auth-required">Shop Now</a>
-            </div>
-        </div>
+                btn.addEventListener("click", function (e) {
 
-        <div class="collection-card">
-            <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1887&q=80">
+                    if (!isLoggedIn) {
+                        e.preventDefault();
+                        alert("Please login first to continue.");
+                        window.location.href = "/login";
+                    }
 
-            <div class="collection-overlay">
-                <h3>Street Style</h3>
-                <a href="/login" class="btn-secondary auth-required">Shop Now</a>
-            </div>
-        </div>
+                });
 
-    </div>
+            });
 
-</section>
+            // ✅ HANDLE SHOP COLLECTION BUTTONS (Redirect to categories section)
+            document.querySelectorAll(".shop-collection").forEach(function (btn) {
 
-<!-- TRENDING PRODUCTS -->
+                btn.addEventListener("click", function (e) {
 
-<section class="products section-padding">
+                    if (!isLoggedIn) {
+                        e.preventDefault();
+                        alert("Please login first to continue shopping.");
+                        window.location.href = "/login";
+                    }
+                    // If logged in, allow default anchor behavior to scroll to #categories
 
-<div class="section-title">
-<h2>Trending Now</h2>
-<div class="underline"></div>
-</div>
+                });
 
-<div class="product-grid">
-
-<!-- PRODUCT 1 -->
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img src="https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg">
-
-<div class="wishlist-icon auth-required">
-<i class="fa-regular fa-heart"></i>
-</div>
-
-<button class="add-to-cart auth-required">Add to Bag</button>
-
-</div>
-
-<div class="product-info">
-
-<h4 class="brand">VYBE EXCLUSIVE</h4>
-<p class="product-name">Tailored Wool Coat</p>
-
-<div class="product-price">
-<span class="curr-price">$129.00</span>
-<span class="old-price">$180.00</span>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCT 2 -->
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1920&q=80">
-
-<div class="wishlist-icon auth-required">
-<i class="fa-regular fa-heart"></i>
-</div>
-
-<button class="add-to-cart auth-required">Add to Bag</button>
-
-</div>
-
-<div class="product-info">
-
-<h4 class="brand">URBAN VYBE</h4>
-<p class="product-name">Classic Yellow Set</p>
-
-<div class="product-price">
-<span class="curr-price">$89.00</span>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCT 3 -->
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=1887&q=80">
-
-<div class="wishlist-icon auth-required">
-<i class="fa-regular fa-heart"></i>
-</div>
-
-<button class="add-to-cart auth-required">Add to Bag</button>
-
-</div>
-
-<div class="product-info">
-
-<h4 class="brand">VYBE ESSENTIALS</h4>
-<p class="product-name">Minimalist Linen Shirt</p>
-
-<div class="product-price">
-<span class="curr-price">$45.00</span>
-<span class="old-price">$60.00</span>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCT 4 -->
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=1886&q=80">
-
-<div class="wishlist-icon auth-required">
-<i class="fa-regular fa-heart"></i>
-</div>
-
-<button class="add-to-cart auth-required">Add to Bag</button>
-
-</div>
-
-<div class="product-info">
-
-<h4 class="brand">VYBE LUXE</h4>
-<p class="product-name">High-Waisted Trousers</p>
-
-<div class="product-price">
-<span class="curr-price">$75.00</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- FOOTER -->
-<%- include('partials/footer') %>
-
-</div>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    // ✅ SAFELY GET USER LOGIN STATUS
-    const userEl = document.getElementById("userData");
-    const isLoggedIn = userEl && userEl.dataset.loggedin === "true";
-
-    // ✅ HANDLE ALL AUTH-REQUIRED BUTTONS
-    document.querySelectorAll(".auth-required").forEach(function(btn){
-
-        btn.addEventListener("click", function(e){
-
-            if(!isLoggedIn){
-                e.preventDefault();
-                alert("Please login first to continue.");
-                window.location.href = "/login";
-            }
+            });
 
         });
+    </script>
 
-    });
-
-});
-</script>
-
-<!-- MAIN SCRIPT -->
-<!-- <script src="/js/script.js"></script> -->
+    <!-- MAIN SCRIPT -->
+    <!-- <script src="/js/script.js"></script> -->
 
 </body>
 

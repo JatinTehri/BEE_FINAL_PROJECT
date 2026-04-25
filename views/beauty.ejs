@@ -1,105 +1,403 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
 
-<main>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty & Care</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 
-<section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=2087');">
-<div class="hero-content">
-<p class="hero-subtitle">Glow Up</p>
-<h1 class="hero-title">BEAUTY & CARE</h1>
-<p class="hero-description">Skincare, makeup, and fragrances from top global brands.</p>
-</div>
-</section>
+<body>
 
-<!-- FRAGRANCES -->
+    <%- include('partials/header') %>
 
-<section class="section-padding">
-<div class="section-title"><h2>Fragrances</h2><div class="underline"></div></div>
+        <main>
 
-<div class="product-grid">
+            <section class="hero"
+                style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=2087');">
+                <div class="hero-content">
+                    <p class="hero-subtitle">Glow Up</p>
+                    <h1 class="hero-title">BEAUTY & CARE</h1>
+                    <p class="hero-description">Skincare, makeup, and fragrances from top global brands.</p>
+                </div>
+            </section>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Luxury Perfume</div><div class="product-price">₹2499</div></div></div>
+            <!-- FRAGRANCES -->
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Body Mist</div><div class="product-price">₹899</div></div></div>
+            <section class="section-padding">
+                <div class="section-title">
+                    <h2>Fragrances</h2>
+                    <div class="underline"></div>
+                </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1587017539504-67cfbddac569"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Floral Perfume</div><div class="product-price">₹1999</div></div></div>
+                <div class="product-grid">
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Premium Deodorant</div><div class="product-price">₹599</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1523293182086-7651a899d37f"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Luxury Perfume</div>
+                            <div class="product-price">₹2499</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Roll On Perfume</div><div class="product-price">₹699</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1594035910387-fea47794261f"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Body Mist</div>
+                            <div class="product-price">₹899</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Signature Fragrance</div><div class="product-price">₹2599</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1587017539504-67cfbddac569"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Floral Perfume</div>
+                            <div class="product-price">₹1999</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Rose Perfume</div><div class="product-price">₹1999</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1615634260167-c8cdede054de"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Premium Deodorant</div>
+                            <div class="product-price">₹599</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Aqua Body Mist</div><div class="product-price">₹899</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Roll On Perfume</div>
+                            <div class="product-price">₹699</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Fresh Deo</div><div class="product-price">₹499</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Signature Fragrance</div>
+                            <div class="product-price">₹2599</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE</div><div class="product-name">Luxury Scent</div><div class="product-price">₹2799</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Rose Perfume</div>
+                            <div class="product-price">₹1999</div>
+                        </div>
+                    </div>
 
-</div>
-</section>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1594035910387-fea47794261f"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Aqua Body Mist</div>
+                            <div class="product-price">₹899</div>
+                        </div>
+                    </div>
 
-<!-- SKINCARE -->
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1615634260167-c8cdede054de"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Fresh Deo</div>
+                            <div class="product-price">₹499</div>
+                        </div>
+                    </div>
 
-<section class="section-padding" style="background-color: var(--bg-light);">
-<div class="section-title"><h2>Skincare</h2><div class="underline"></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1523293182086-7651a899d37f"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE</div>
+                            <div class="product-name">Luxury Scent</div>
+                            <div class="product-price">₹2799</div>
+                        </div>
+                    </div>
 
-<div class="product-grid">
+                </div>
+            </section>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Hydrating Moisturizer</div><div class="product-price">₹999</div></div></div>
+            <!-- SKINCARE -->
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Vitamin C Serum</div><div class="product-price">₹1299</div></div></div>
+            <section class="section-padding" style="background-color: var(--bg-light);">
+                <div class="section-title">
+                    <h2>Skincare</h2>
+                    <div class="underline"></div>
+                </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Face Cleanser</div><div class="product-price">₹699</div></div></div>
+                <div class="product-grid">
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Radiance Serum</div><div class="product-price">₹950</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Hydrating Moisturizer</div>
+                            <div class="product-price">₹999</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Sunscreen SPF50</div><div class="product-price">₹799</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Vitamin C Serum</div>
+                            <div class="product-price">₹1299</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Night Cream</div><div class="product-price">₹1199</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1556228578-8c89e6adf883"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Face Cleanser</div>
+                            <div class="product-price">₹699</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Face Mask</div><div class="product-price">₹599</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Radiance Serum</div>
+                            <div class="product-price">₹950</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Glow Booster Serum</div><div class="product-price">₹1399</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Sunscreen SPF50</div>
+                            <div class="product-price">₹799</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Hydrating Gel</div><div class="product-price">₹799</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Night Cream</div>
+                            <div class="product-price">₹1199</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE GLOW</div><div class="product-name">Brightening Cream</div><div class="product-price">₹1099</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1556228578-8c89e6adf883"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Face Mask</div>
+                            <div class="product-price">₹599</div>
+                        </div>
+                    </div>
 
-</div>
-</section>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Glow Booster Serum</div>
+                            <div class="product-price">₹1399</div>
+                        </div>
+                    </div>
 
-<!-- MAKEUP -->
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Hydrating Gel</div>
+                            <div class="product-price">₹799</div>
+                        </div>
+                    </div>
 
-<section class="section-padding">
-<div class="section-title"><h2>Makeup</h2><div class="underline"></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1556228578-8c89e6adf883"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE GLOW</div>
+                            <div class="product-name">Brightening Cream</div>
+                            <div class="product-price">₹1099</div>
+                        </div>
+                    </div>
 
-<div class="product-grid">
+                </div>
+            </section>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Matte Lipstick</div><div class="product-price">₹799</div></div></div>
+            <!-- MAKEUP -->
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Liquid Foundation</div><div class="product-price">₹1199</div></div></div>
+            <section class="section-padding">
+                <div class="section-title">
+                    <h2>Makeup</h2>
+                    <div class="underline"></div>
+                </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1590156560476-6c7b61b6d8c1"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Mascara</div><div class="product-price">₹699</div></div></div>
+                <div class="product-grid">
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Lip Gloss</div><div class="product-price">₹599</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Matte Lipstick</div>
+                            <div class="product-price">₹799</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Compact Powder</div><div class="product-price">₹799</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Liquid Foundation</div>
+                            <div class="product-price">₹1199</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1590156560476-6c7b61b6d8c1"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Eyeliner</div><div class="product-price">₹499</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1590156560476-6c7b61b6d8c1"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Mascara</div>
+                            <div class="product-price">₹699</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Lip Tint</div><div class="product-price">₹699</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Lip Gloss</div>
+                            <div class="product-price">₹599</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Blush Palette</div><div class="product-price">₹999</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Compact Powder</div>
+                            <div class="product-price">₹799</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1590156560476-6c7b61b6d8c1"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Highlighter</div><div class="product-price">₹899</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1590156560476-6c7b61b6d8c1"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Eyeliner</div>
+                            <div class="product-price">₹499</div>
+                        </div>
+                    </div>
 
-<div class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796"><button class="add-to-cart">Add to Bag</button></div><div class="product-info"><div class="brand">VYBE BEAUTY</div><div class="product-name">Makeup Kit</div><div class="product-price">₹1999</div></div></div>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Lip Tint</div>
+                            <div class="product-price">₹699</div>
+                        </div>
+                    </div>
 
-</div>
-</section>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Blush Palette</div>
+                            <div class="product-price">₹999</div>
+                        </div>
+                    </div>
 
-</main>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1590156560476-6c7b61b6d8c1"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Highlighter</div>
+                            <div class="product-price">₹899</div>
+                        </div>
+                    </div>
 
-<%- include('partials/footer') %>
+                    <div class="product-card">
+                        <div class="product-image"><img
+                                src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796"><button
+                                class="add-to-cart">Add to Bag</button></div>
+                        <div class="product-info">
+                            <div class="brand">VYBE BEAUTY</div>
+                            <div class="product-name">Makeup Kit</div>
+                            <div class="product-price">₹1999</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <%- include('partials/footer') %>
+
+</body>
+
+</html>
