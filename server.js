@@ -14,6 +14,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const session = require("express-session");
 
 const User = require("./models/User");
+const Cart = require("./models/Cart");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,6 +24,7 @@ const PORT = process.env.PORT || 3000;
 // ============================
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static("public"));
 app.use("/uploads", express.static("uploads"));
 app.use(cookieParser());
@@ -123,6 +125,73 @@ const authMiddleware = (req, res, next) => {
     } catch {
         return res.redirect("/login");
     }
+};
+
+const apiAuthMiddleware = (req, res, next) => {
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded;
+        next();
+    } catch {
+        return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+};
+
+const cartRateLimitStore = new Map();
+const CART_WINDOW_MS = 60 * 1000;
+const CART_MAX_REQUESTS = 60;
+const PRODUCT_KEY_MAX_LENGTH = 200;
+const PRODUCT_NAME_MAX_LENGTH = 200;
+const PRODUCT_IMAGE_MAX_LENGTH = 2000;
+
+const cartRateLimiter = (req, res, next) => {
+    const staleThreshold = Date.now() - CART_WINDOW_MS;
+    for (const [storedKey, entry] of cartRateLimitStore.entries()) {
+        if (entry.start < staleThreshold) {
+            cartRateLimitStore.delete(storedKey);
+        }
+    }
+
+    const key = `${req.ip}:${req.path}`;
+    const now = Date.now();
+    const entry = cartRateLimitStore.get(key);
+
+    if (!entry || now - entry.start > CART_WINDOW_MS) {
+        cartRateLimitStore.set(key, { start: now, count: 1 });
+        return next();
+    }
+
+    if (entry.count >= CART_MAX_REQUESTS) {
+        return res.status(429).json({ success: false, message: "Too many requests" });
+    }
+
+    entry.count += 1;
+    cartRateLimitStore.set(key, entry);
+    next();
+};
+
+const sameOriginGuard = (req, res, next) => {
+    const origin = req.get("origin");
+    const host = req.get("host");
+
+    if (!origin || !host) return next();
+
+    try {
+        const originHost = new URL(origin).host;
+        if (originHost !== host) {
+            return res.status(403).json({ success: false, message: "Invalid request origin" });
+        }
+    } catch {
+        return res.status(403).json({ success: false, message: "Invalid request origin" });
+    }
+
+    next();
 };
 
 // ============================
@@ -314,6 +383,115 @@ app.get("/women", authMiddleware, (req, res) => res.render("women"));
 app.get("/kids", authMiddleware, (req, res) => res.render("kids"));
 app.get("/beauty", authMiddleware, (req, res) => res.render("beauty"));
 app.get("/home-living", authMiddleware, (req, res) => res.render("home-living"));
+
+// ============================
+// CART ROUTES
+// ============================
+
+app.post("/api/cart/add", cartRateLimiter, apiAuthMiddleware, sameOriginGuard, async (req, res) => {
+    try {
+        const { productKey, name, price, image } = req.body;
+
+        if (
+            typeof productKey !== "string" ||
+            typeof name !== "string" ||
+            typeof price !== "number" ||
+            !productKey.trim() ||
+            !name.trim()
+        ) {
+            return res.status(400).json({ success: false, message: "Invalid product data" });
+        }
+
+        const normalizedPrice = Number(price);
+        const safeProductKey = productKey.trim().slice(0, PRODUCT_KEY_MAX_LENGTH);
+        const safeName = name.trim().slice(0, PRODUCT_NAME_MAX_LENGTH);
+        const safeImage = typeof image === "string" ? image.trim().slice(0, PRODUCT_IMAGE_MAX_LENGTH) : "";
+
+        if (Number.isNaN(normalizedPrice) || normalizedPrice < 0) {
+            return res.status(400).json({ success: false, message: "Invalid price" });
+        }
+
+        const existingItem = await Cart.findOne({
+            userId: String(req.user.id),
+            productKey: safeProductKey
+        });
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+            await existingItem.save();
+        } else {
+            await Cart.create({
+                userId: String(req.user.id),
+                productKey: safeProductKey,
+                name: safeName,
+                price: normalizedPrice,
+                image: safeImage,
+                quantity: 1
+            });
+        }
+
+        const cartItems = await Cart.find({ userId: String(req.user.id) });
+        const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+        return res.json({
+            success: true,
+            itemCount,
+            totalAmount
+        });
+    } catch (err) {
+        console.error("Cart add error:", {
+            userId: req.user?.id,
+            productKey: req.body?.productKey,
+            error: err.message
+        });
+        return res.status(500).json({ success: false, message: "Failed to add to cart" });
+    }
+});
+
+app.get("/api/cart/summary", cartRateLimiter, apiAuthMiddleware, async (req, res) => {
+    try {
+        const cartItems = await Cart.find({ userId: String(req.user.id) });
+        const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+        return res.json({
+            success: true,
+            itemCount,
+            totalAmount
+        });
+    } catch (err) {
+        console.error("Cart summary error:", { userId: req.user?.id, error: err.message });
+        return res.status(500).json({ success: false, message: "Failed to fetch cart summary" });
+    }
+});
+
+app.get("/api/cart/items", cartRateLimiter, apiAuthMiddleware, async (req, res) => {
+    try {
+        const items = await Cart.find({ userId: String(req.user.id) }).sort({ createdAt: -1 });
+        return res.json({ success: true, items });
+    } catch (err) {
+        console.error("Cart items error:", { userId: req.user?.id, error: err.message });
+        return res.status(500).json({ success: false, message: "Failed to fetch cart items" });
+    }
+});
+
+app.get("/cart", cartRateLimiter, authMiddleware, async (req, res) => {
+    try {
+        const items = await Cart.find({ userId: String(req.user.id) }).sort({ createdAt: -1 });
+        const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+        const totalAmount = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+        res.render("cart", {
+            items,
+            totalItems,
+            totalAmount
+        });
+    } catch (err) {
+        console.error("Cart page error:", { userId: req.user?.id, error: err.message });
+        res.status(500).send("Unable to load cart right now. Please try again.");
+    }
+});
 
 // ============================
 // SERVER

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart | VYBE</title>
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<%- include('partials/header') %>
+
+<main class="section-padding cart-page">
+    <div class="section-title">
+        <h2>Your Cart</h2>
+        <div class="underline"></div>
+    </div>
+
+    <% if (!items || items.length === 0) { %>
+        <div class="cart-empty">
+            <p>Your cart is empty.</p>
+            <a href="/men" class="btn-primary">Continue Shopping</a>
+        </div>
+    <% } else { %>
+        <div class="cart-layout">
+            <div class="cart-items-list">
+                <% items.forEach(item => { %>
+                    <div class="cart-item-card">
+                        <div class="cart-item-image-wrap">
+                            <% if (item.image) { %>
+                                <img src="<%= item.image %>" alt="<%= item.name %>" class="cart-item-image">
+                            <% } else { %>
+                                <div class="cart-item-image-placeholder">No Image</div>
+                            <% } %>
+                        </div>
+                        <div class="cart-item-info">
+                            <h3><%= item.name %></h3>
+                            <p>Price: ₹<%= item.price.toFixed(2) %></p>
+                            <p>Quantity: <%= item.quantity %></p>
+                            <p>Subtotal: ₹<%= (item.price * item.quantity).toFixed(2) %></p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <aside class="cart-summary">
+                <h3>Checkout Summary</h3>
+                <div class="cart-summary-row">
+                    <span>Total Items</span>
+                    <strong><%= totalItems %></strong>
+                </div>
+                <div class="cart-summary-row">
+                    <span>Total Amount</span>
+                    <strong>₹<%= totalAmount.toFixed(2) %></strong>
+                </div>
+                <button class="btn-primary cart-checkout-btn">Proceed to Checkout</button>
+            </aside>
+        </div>
+    <% } %>
+</main>
+
+<%- include('partials/footer') %>
