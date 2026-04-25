@@ -143,6 +143,8 @@ const CART_MAX_REQUESTS = 60;
 const PRODUCT_KEY_MAX_LENGTH = 200;
 const PRODUCT_NAME_MAX_LENGTH = 200;
 const PRODUCT_IMAGE_MAX_LENGTH = 2000;
+const STRONG_PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
+const STRONG_PASSWORD_ERROR = "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.";
 
 const getCartSummary = async (userId) => {
     const summary = await Cart.aggregate([
@@ -279,6 +281,13 @@ app.get("/auth/google/callback",
 app.post("/signup", upload.single("profilePic"), async (req, res) => {
 
     const { name, email, username, password, confirmPassword } = req.body;
+
+    if (!STRONG_PASSWORD_REGEX.test(password)) {
+        return res.render("signup", {
+            title: "Signup",
+            error: STRONG_PASSWORD_ERROR
+        });
+    }
 
     if (password !== confirmPassword) {
         return res.render("signup", {
