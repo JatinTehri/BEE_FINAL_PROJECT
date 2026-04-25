@@ -26,7 +26,7 @@
         <div class="cart-layout">
             <div class="cart-items-list">
                 <% items.forEach(item => { %>
-                    <div class="cart-item-card">
+                    <div class="cart-item-card" data-product-key="<%= item.productKey %>" data-price="<%= item.price %>">
                         <div class="cart-item-image-wrap">
                             <% if (item.image) { %>
                                 <img src="<%= item.image %>" alt="<%= item.name %>" class="cart-item-image">
@@ -37,8 +37,12 @@
                         <div class="cart-item-info">
                             <h3><%= item.name %></h3>
                             <p>Price: ₹<%= item.price.toFixed(2) %></p>
-                            <p>Quantity: <%= item.quantity %></p>
-                            <p>Subtotal: ₹<%= (item.price * item.quantity).toFixed(2) %></p>
+                            <div class="cart-quantity-controls">
+                                <button type="button" class="cart-qty-btn cart-decrease-btn" aria-label="Decrease quantity">−</button>
+                                <span class="cart-quantity-value"><%= item.quantity %></span>
+                                <button type="button" class="cart-qty-btn cart-increase-btn" aria-label="Increase quantity">+</button>
+                            </div>
+                            <p>Subtotal: ₹<span class="cart-item-subtotal"><%= (item.price * item.quantity).toFixed(2) %></span></p>
                         </div>
                     </div>
                 <% }) %>
@@ -48,11 +52,11 @@
                 <h3>Checkout Summary</h3>
                 <div class="cart-summary-row">
                     <span>Total Items</span>
-                    <strong><%= totalItems %></strong>
+                    <strong id="cart-total-items"><%= totalItems %></strong>
                 </div>
                 <div class="cart-summary-row">
                     <span>Total Amount</span>
-                    <strong>₹<%= totalAmount.toFixed(2) %></strong>
+                    <strong>₹<span id="cart-total-amount"><%= totalAmount.toFixed(2) %></span></strong>
                 </div>
                 <a href="checkout.html">
                     <button class="btn-primary cart-checkout-btn">Proceed to Checkout</button>

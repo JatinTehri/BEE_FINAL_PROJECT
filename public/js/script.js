@@ -57,6 +57,36 @@ const loadCartSummary = async () => {
     }
 };
 
+const updateCartQuantity = async (productKey, delta) => {
+    const response = await fetch("/api/cart/quantity", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ productKey, delta })
+    });
+
+    if (response.status === 401) {
+        redirectToLogin();
+        return null;
+    }
+
+    let data = null;
+    try {
+        data = await response.json();
+    } catch {
+        data = null;
+    }
+
+    if (!response.ok) {
+        const error = new Error(data?.message || "Failed to update quantity");
+        error.status = response.status;
+        throw error;
+    }
+
+    return data;
+};
+
 const addToCart = async (product) => {
     const response = await fetch("/api/cart/add", {
         method: "POST",
@@ -173,6 +203,64 @@ if (searchIcon) {
     searchIcon.addEventListener("click", () => {
         searchInput?.classList.toggle("active");
         searchInput?.focus();
+    });
+}
+
+const cartItemsList = document.querySelector(".cart-items-list");
+const cartTotalItemsElement = document.getElementById("cart-total-items");
+const cartTotalAmountElement = document.getElementById("cart-total-amount");
+if (cartItemsList) {
+    cartItemsList.addEventListener("click", async (event) => {
+        const targetButton = event.target.closest(".cart-qty-btn");
+        if (!targetButton) return;
+
+        const itemCard = targetButton.closest(".cart-item-card");
+        const productKey = itemCard?.dataset?.productKey;
+        if (!productKey) return;
+
+        const delta = targetButton.classList.contains("cart-increase-btn") ? 1 : -1;
+
+        targetButton.disabled = true;
+        try {
+            const data = await updateCartQuantity(productKey, delta);
+            if (data?.success) {
+                updateCartCountBadge(data.itemCount);
+                if (cartTotalItemsElement) {
+                    cartTotalItemsElement.textContent = String(data.itemCount || 0);
+                }
+                if (cartTotalAmountElement) {
+                    cartTotalAmountElement.textContent = Number(data.totalAmount || 0).toFixed(2);
+                }
+
+                if (data.removed) {
+                    itemCard?.remove();
+                    if (!cartItemsList.querySelector(".cart-item-card")) {
+                        window.location.reload();
+                    }
+                } else {
+                    const quantityValue = itemCard?.querySelector(".cart-quantity-value");
+                    const subtotalElement = itemCard?.querySelector(".cart-item-subtotal");
+                    const itemPrice = Number(itemCard?.dataset.price || 0);
+
+                    if (quantityValue) {
+                        quantityValue.textContent = String(data.quantity || 1);
+                    }
+                    if (subtotalElement) {
+                        subtotalElement.textContent = (itemPrice * (data.quantity || 1)).toFixed(2);
+                    }
+                }
+            }
+        } catch (error) {
+            if (error?.status === 404) {
+                alert("This item is no longer in your cart.");
+            } else if (error?.status === 500) {
+                alert("Server error. Please try again shortly.");
+            } else {
+                alert(error?.message || "Unable to update quantity. Please try again.");
+            }
+        } finally {
+            targetButton.disabled = false;
+        }
     });
 }
 
