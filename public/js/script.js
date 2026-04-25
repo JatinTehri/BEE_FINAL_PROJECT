@@ -9,6 +9,20 @@ const formatPriceToNumber = (priceText) => {
     return Number.isNaN(parsed) ? 0 : parsed;
 };
 
+const buildProductKey = (name, price, image) => {
+    let imagePath = "";
+    try {
+        imagePath = image ? new URL(image, window.location.origin).pathname : "";
+    } catch {
+        imagePath = image || "";
+    }
+
+    const normalizedName = (name || "").trim().toLowerCase().replace(/\s+/g, "-");
+    const normalizedImage = imagePath.trim().toLowerCase();
+
+    return `${normalizedName}|${price}|${normalizedImage}`;
+};
+
 const updateCartCountBadge = (count) => {
     if (cartCountElement) {
         cartCountElement.textContent = String(count || 0);
@@ -78,7 +92,7 @@ document.querySelectorAll(".add-to-cart").forEach((button) => {
         const productPriceText = productCard?.querySelector(".product-price")?.textContent?.trim() || "";
         const productImage = productCard?.querySelector(".product-image img")?.getAttribute("src") || "";
         const productPrice = formatPriceToNumber(productPriceText);
-        const productKey = `${productName}-${productImage}`;
+        const productKey = buildProductKey(productName, productPrice, productImage);
 
         try {
             const data = await addToCart({

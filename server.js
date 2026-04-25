@@ -430,7 +430,7 @@ app.post("/api/cart/add", cartRateLimiter, apiAuthMiddleware, sameOriginGuard, a
             totalAmount
         });
     } catch (err) {
-        console.log("Cart add error:", {
+        console.error("Cart add error:", {
             userId: req.user?.id,
             productKey: req.body?.productKey,
             error: err.message
@@ -451,7 +451,7 @@ app.get("/api/cart/summary", cartRateLimiter, apiAuthMiddleware, async (req, res
             totalAmount
         });
     } catch (err) {
-        console.log("Cart summary error:", { userId: req.user?.id, error: err.message });
+        console.error("Cart summary error:", { userId: req.user?.id, error: err.message });
         return res.status(500).json({ success: false, message: "Failed to fetch cart summary" });
     }
 });
@@ -461,7 +461,7 @@ app.get("/api/cart/items", cartRateLimiter, apiAuthMiddleware, async (req, res) 
         const items = await Cart.find({ userId: String(req.user.id) }).sort({ createdAt: -1 });
         return res.json({ success: true, items });
     } catch (err) {
-        console.log("Cart items error:", { userId: req.user?.id, error: err.message });
+        console.error("Cart items error:", { userId: req.user?.id, error: err.message });
         return res.status(500).json({ success: false, message: "Failed to fetch cart items" });
     }
 });
@@ -478,7 +478,7 @@ app.get("/cart", cartRateLimiter, authMiddleware, async (req, res) => {
             totalAmount
         });
     } catch (err) {
-        console.log("Cart page error:", { userId: req.user?.id, error: err.message });
+        console.error("Cart page error:", { userId: req.user?.id, error: err.message });
         res.status(500).send("Unable to load cart right now. Please try again.");
     }
 });
