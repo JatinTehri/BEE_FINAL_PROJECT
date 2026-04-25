@@ -35,7 +35,15 @@
                         <div class="wishlist-icon active" data-product-key="<%= item.productKey %>">
                             <i class="fa-solid fa-heart"></i>
                         </div>
-                        <button class="add-to-cart auth-required">Add to Bag</button>
+                        <button
+                            class="add-to-cart auth-required"
+                            data-product-key="<%= item.productKey %>"
+                            data-product-name="<%= item.name %>"
+                            data-product-price="<%= item.price %>"
+                            data-product-image="<%= item.image %>"
+                        >
+                            Add to Bag
+                        </button>
                     </div>
                     <div class="product-info">
                         <div class="brand">VYBE</div>

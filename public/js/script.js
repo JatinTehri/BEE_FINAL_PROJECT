@@ -237,6 +237,7 @@ const loadWishlistItems = async () => {
     try {
         const response = await fetch("/api/wishlist/items");
         if (!response.ok) {
+            console.error("Wishlist load request failed:", response.status);
             return;
         }
 
