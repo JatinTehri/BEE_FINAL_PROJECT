@@ -144,6 +144,24 @@ const PRODUCT_KEY_MAX_LENGTH = 200;
 const PRODUCT_NAME_MAX_LENGTH = 200;
 const PRODUCT_IMAGE_MAX_LENGTH = 2000;
 
+const getCartSummary = async (userId) => {
+    const summary = await Cart.aggregate([
+        { $match: { userId: String(userId) } },
+        {
+            $group: {
+                _id: null,
+                itemCount: { $sum: "$quantity" },
+                totalAmount: { $sum: { $multiply: ["$price", "$quantity"] } }
+            }
+        }
+    ]);
+
+    return {
+        itemCount: summary[0]?.itemCount || 0,
+        totalAmount: summary[0]?.totalAmount || 0
+    };
+};
+
 const cartRateLimiter = (req, res, next) => {
     const staleThreshold = Date.now() - CART_WINDOW_MS;
     for (const [storedKey, entry] of cartRateLimitStore.entries()) {
@@ -415,19 +433,7 @@ app.post("/api/cart/add", cartRateLimiter, apiAuthMiddleware, sameOriginGuard, a
             });
         }
 
-        const summary = await Cart.aggregate([
-            { $match: { userId: String(req.user.id) } },
-            {
-                $group: {
-                    _id: null,
-                    itemCount: { $sum: "$quantity" },
-                    totalAmount: { $sum: { $multiply: ["$price", "$quantity"] } }
-                }
-            }
-        ]);
-
-        const itemCount = summary[0]?.itemCount || 0;
-        const totalAmount = summary[0]?.totalAmount || 0;
+        const { itemCount, totalAmount } = await getCartSummary(req.user.id);
 
         return res.json({
             success: true,
@@ -446,9 +452,7 @@ app.post("/api/cart/add", cartRateLimiter, apiAuthMiddleware, sameOriginGuard, a
 
 app.get("/api/cart/summary", cartRateLimiter, apiAuthMiddleware, async (req, res) => {
     try {
-        const cartItems = await Cart.find({ userId: String(req.user.id) });
-        const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const { itemCount, totalAmount } = await getCartSummary(req.user.id);
 
         return res.json({
             success: true,
@@ -504,9 +508,7 @@ app.post("/api/cart/quantity", cartRateLimiter, apiAuthMiddleware, sameOriginGua
             await existingItem.save();
         }
 
-        const cartItems = await Cart.find({ userId: String(req.user.id) });
-        const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const { itemCount, totalAmount } = await getCartSummary(req.user.id);
 
         return res.json({
             success: true,
