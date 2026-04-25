@@ -330,7 +330,7 @@ document.addEventListener("click", (event) => {
     }
 
     const wishlistContainer = event.target.closest(".wishlist-icon");
-    if (wishlistContainer?.closest(".product-card")) {
+    if (wishlistContainer) {
         handleWishlistToggleClick(wishlistContainer, event);
     }
 });
