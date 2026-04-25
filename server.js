@@ -146,8 +146,18 @@ const apiAuthMiddleware = (req, res, next) => {
 const cartRateLimitStore = new Map();
 const CART_WINDOW_MS = 60 * 1000;
 const CART_MAX_REQUESTS = 60;
+const PRODUCT_KEY_MAX_LENGTH = 200;
+const PRODUCT_NAME_MAX_LENGTH = 200;
+const PRODUCT_IMAGE_MAX_LENGTH = 2000;
 
 const cartRateLimiter = (req, res, next) => {
+    const staleThreshold = Date.now() - CART_WINDOW_MS;
+    for (const [storedKey, entry] of cartRateLimitStore.entries()) {
+        if (entry.start < staleThreshold) {
+            cartRateLimitStore.delete(storedKey);
+        }
+    }
+
     const key = `${req.ip}:${req.path}`;
     const now = Date.now();
     const entry = cartRateLimitStore.get(key);
@@ -393,9 +403,9 @@ app.post("/api/cart/add", cartRateLimiter, apiAuthMiddleware, sameOriginGuard, a
         }
 
         const normalizedPrice = Number(price);
-        const safeProductKey = productKey.trim().slice(0, 200);
-        const safeName = name.trim().slice(0, 200);
-        const safeImage = typeof image === "string" ? image.trim().slice(0, 2000) : "";
+        const safeProductKey = productKey.trim().slice(0, PRODUCT_KEY_MAX_LENGTH);
+        const safeName = name.trim().slice(0, PRODUCT_NAME_MAX_LENGTH);
+        const safeImage = typeof image === "string" ? image.trim().slice(0, PRODUCT_IMAGE_MAX_LENGTH) : "";
 
         if (Number.isNaN(normalizedPrice) || normalizedPrice < 0) {
             return res.status(400).json({ success: false, message: "Invalid price" });
