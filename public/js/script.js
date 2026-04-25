@@ -15,6 +15,11 @@ const updateCartCountBadge = (count) => {
     }
 };
 
+const redirectToLogin = () => {
+    alert("Please login first to continue.");
+    window.location.href = "/login";
+};
+
 const loadCartSummary = async () => {
     if (!isLoggedIn) {
         updateCartCountBadge(0);
@@ -48,8 +53,7 @@ const addToCart = async (product) => {
     });
 
     if (response.status === 401) {
-        alert("Please login first to continue.");
-        window.location.href = "/login";
+        redirectToLogin();
         return null;
     }
 
@@ -65,8 +69,7 @@ document.querySelectorAll(".add-to-cart").forEach((button) => {
         event.preventDefault();
 
         if (!isLoggedIn) {
-            alert("Please login first to continue.");
-            window.location.href = "/login";
+            redirectToLogin();
             return;
         }
 
@@ -75,7 +78,7 @@ document.querySelectorAll(".add-to-cart").forEach((button) => {
         const productPriceText = productCard?.querySelector(".product-price")?.textContent?.trim() || "";
         const productImage = productCard?.querySelector(".product-image img")?.getAttribute("src") || "";
         const productPrice = formatPriceToNumber(productPriceText);
-        const productKey = `${productName}-${productPrice}`;
+        const productKey = `${productName}-${productImage}`;
 
         try {
             const data = await addToCart({
