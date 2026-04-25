@@ -415,9 +415,19 @@ app.post("/api/cart/add", cartRateLimiter, apiAuthMiddleware, sameOriginGuard, a
             });
         }
 
-        const cartItems = await Cart.find({ userId: String(req.user.id) });
-        const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const summary = await Cart.aggregate([
+            { $match: { userId: String(req.user.id) } },
+            {
+                $group: {
+                    _id: null,
+                    itemCount: { $sum: "$quantity" },
+                    totalAmount: { $sum: { $multiply: ["$price", "$quantity"] } }
+                }
+            }
+        ]);
+
+        const itemCount = summary[0]?.itemCount || 0;
+        const totalAmount = summary[0]?.totalAmount || 0;
 
         return res.json({
             success: true,
