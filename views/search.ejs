@@ -35,6 +35,10 @@
                     <div class="product-card">
                         <div class="product-image">
                             <img src="<%= product.image %>" alt="<%= product.name %>">
+                            <div class="wishlist-icon auth-required">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <button class="add-to-cart auth-required">Add to Bag</button>
                         </div>
                         <div class="product-info">
                             <div class="brand"><%= product.brand %></div>

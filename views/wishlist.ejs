@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wishlist | VYBE</title>
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<%- include('partials/header') %>
+
+<main class="section-padding wishlist-page">
+    <div class="section-title">
+        <h2>Your Wishlist</h2>
+        <div class="underline"></div>
+    </div>
+
+    <% if (!items || items.length === 0) { %>
+        <div class="cart-empty">
+            <p>Your wishlist is empty.</p>
+            <a href="/men" class="btn-primary">Continue Shopping</a>
+        </div>
+    <% } else { %>
+        <div class="product-grid">
+            <% items.forEach((item) => { %>
+                <div class="product-card">
+                    <div class="product-image">
+                        <% if (item.image) { %>
+                            <img src="<%= item.image %>" alt="<%= item.name %>">
+                        <% } else { %>
+                            <div class="cart-item-image-placeholder">No Image</div>
+                        <% } %>
+                        <div class="wishlist-icon active" data-product-key="<%= item.productKey %>">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <button class="add-to-cart auth-required">Add to Bag</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="brand">VYBE</div>
+                        <div class="product-name"><%= item.name %></div>
+                        <div class="product-price">₹<%= item.price.toFixed(2) %></div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</main>
+
+<%- include('partials/footer') %>
