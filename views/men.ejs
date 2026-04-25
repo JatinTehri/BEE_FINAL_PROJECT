@@ -739,33 +739,7 @@
 
         <%- include('partials/footer') %>
 
-            <!-- CART SIDEBAR -->
-            <div class="cart-sidebar" id="cartSidebar">
-                <div class="cart-header">
-                    <h2>Your Bag</h2>
-                    <button class="close-cart" id="closeCart">&times;</button>
-                </div>
-                <div class="cart-items" id="cartItems">
-                    <div class="cart-empty">Your bag is empty</div>
-                </div>
-                <div class="cart-footer">
-                    <div class="cart-summary">
-                        <div class="summary-row">
-                            <span>Subtotal:</span>
-                            <span id="subtotal">₹0</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>Shipping:</span>
-                            <span id="shipping">₹0</span>
-                        </div>
-                        <div class="summary-row total">
-                            <span>Total:</span>
-                            <span id="total">₹0</span>
-                        </div>
-                    </div>
-                    <button class="checkout-btn" id="checkoutBtn" disabled>Proceed to Checkout</button>
-                </div>
-            </div>
+            
 
             <!-- JAVASCRIPT -->
             <script>
@@ -790,7 +764,7 @@
                     // ==================== CART SYSTEM ====================
                     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-                    const cartSidebar = document.getElementById('cartSidebar');
+            
                     const closeCartBtn = document.getElementById('closeCart');
                     const cartItemsContainer = document.getElementById('cartItems');
                     const checkoutBtn = document.getElementById('checkoutBtn');

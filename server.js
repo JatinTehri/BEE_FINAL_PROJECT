@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const multer = require("multer");
@@ -143,8 +144,64 @@ const CART_MAX_REQUESTS = 60;
 const PRODUCT_KEY_MAX_LENGTH = 200;
 const PRODUCT_NAME_MAX_LENGTH = 200;
 const PRODUCT_IMAGE_MAX_LENGTH = 2000;
+const SEARCH_QUERY_MAX_LENGTH = 100;
+const SEARCH_CARD_REGEX = /<div class="product-card"[\s\S]*?<div class="product-info">[\s\S]*?<\/div>\s*<\/div>/g;
 const STRONG_PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
 const STRONG_PASSWORD_ERROR = "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.";
+const SEARCHABLE_PRODUCT_PAGES = [
+    { route: "/", category: "Home", template: "home.ejs" },
+    { route: "/men", category: "Men", template: "men.ejs" },
+    { route: "/women", category: "Women", template: "women.ejs" },
+    { route: "/kids", category: "Kids", template: "kids.ejs" },
+    { route: "/home-living", category: "Home & Living", template: "home-living.ejs" },
+    { route: "/beauty", category: "Beauty", template: "beauty.ejs" }
+];
+
+const normalizeWhitespace = (value = "") => value.replace(/\s+/g, " ").trim();
+const cleanText = (value = "") => normalizeWhitespace(value.replace(/<[^>]*>/g, " "));
+
+const extractProductsFromTemplate = (templatePath, route, category) => {
+    const templateContent = fs.readFileSync(templatePath, "utf8");
+    const cards = [...templateContent.matchAll(SEARCH_CARD_REGEX)];
+
+    return cards
+        .map((card) => {
+            const cardHtml = card[0];
+            const name = cleanText(cardHtml.match(/class="product-name"[^>]*>([\s\S]*?)<\/(?:div|p)>/)?.[1] || "");
+            const brand = cleanText(cardHtml.match(/class="brand"[^>]*>([\s\S]*?)<\/(?:div|h4)>/)?.[1] || "");
+            const price = cleanText(cardHtml.match(/class="product-price"[^>]*>([\s\S]*?)<\/div>/)?.[1] || "");
+            const image = cardHtml.match(/<img[^>]*src="([^"]+)"/)?.[1] || "";
+
+            if (!name) return null;
+
+            return {
+                name,
+                brand,
+                price,
+                image,
+                route,
+                category
+            };
+        })
+        .filter(Boolean);
+};
+
+const getSearchableProducts = () => {
+    const products = [];
+
+    for (const page of SEARCHABLE_PRODUCT_PAGES) {
+        try {
+            const templatePath = path.join(__dirname, "views", page.template);
+            products.push(...extractProductsFromTemplate(templatePath, page.route, page.category));
+        } catch (error) {
+            console.error(`Search indexing failed for ${page.template}:`, error.message);
+        }
+    }
+
+    return products;
+};
+
+const searchableProducts = getSearchableProducts();
 
 const getCartSummary = async (userId) => {
     const summary = await Cart.aggregate([
@@ -238,6 +295,26 @@ app.use(async (req, res, next) => {
 // HOME
 app.get("/", (req, res) => {
     res.render("home", { title: "Home Page" });
+});
+
+app.get("/search", (req, res) => {
+    const rawQuery = typeof req.query.q === "string" ? req.query.q : "";
+    const query = normalizeWhitespace(rawQuery).slice(0, SEARCH_QUERY_MAX_LENGTH);
+    const normalizedQuery = query.toLowerCase();
+
+    const results = normalizedQuery
+        ? searchableProducts.filter((product) => {
+            return [product.name, product.brand, product.category].some((field) =>
+                field.toLowerCase().includes(normalizedQuery)
+            );
+        })
+        : [];
+
+    res.render("search", {
+        title: "Search",
+        query,
+        results
+    });
 });
 
 // LOGIN PAGE

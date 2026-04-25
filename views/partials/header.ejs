@@ -21,7 +21,18 @@
     <div class="nav-icons">
 
         <!-- Search -->
-        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <form class="nav-search-form" action="/search" method="GET">
+            <input
+                type="text"
+                name="q"
+                class="search-input"
+                placeholder="Search products..."
+                aria-label="Search products"
+            >
+            <button type="button" class="search-icon" aria-label="Open product search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
 
         <!-- PROFILE -->
         <% if (user) { %>
