@@ -251,9 +251,9 @@ const toggleWishlist = async (product) => {
 };
 
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", ensureWishlistIcons, { once: true });
+    document.addEventListener("DOMContentLoaded", syncWishlistIcons, { once: true });
 } else {
-    ensureWishlistIcons();
+    syncWishlistIcons();
 }
 
 const loadWishlistItems = async () => {
