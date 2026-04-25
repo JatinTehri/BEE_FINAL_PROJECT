@@ -286,7 +286,8 @@ document.querySelectorAll(".wishlist-icon").forEach((wishlistContainer) => {
                 productCard.remove();
                 renderWishlistEmptyState();
             }
-        } catch {
+        } catch (error) {
+            console.error("Wishlist toggle error:", error);
             applyWishlistIconState(icon, wishlistKeys.has(product.productKey));
             alert("Unable to update wishlist. Please try again.");
         }
