@@ -14,6 +14,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const session = require("express-session");
 
 const User = require("./models/User");
+const Cart = require("./models/Cart");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -122,6 +123,22 @@ const authMiddleware = (req, res, next) => {
         next();
     } catch {
         return res.redirect("/login");
+    }
+};
+
+const apiAuthMiddleware = (req, res, next) => {
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded;
+        next();
+    } catch {
+        return res.status(401).json({ success: false, message: "Unauthorized" });
     }
 };
 
@@ -314,6 +331,102 @@ app.get("/women", authMiddleware, (req, res) => res.render("women"));
 app.get("/kids", authMiddleware, (req, res) => res.render("kids"));
 app.get("/beauty", authMiddleware, (req, res) => res.render("beauty"));
 app.get("/home-living", authMiddleware, (req, res) => res.render("home-living"));
+
+// ============================
+// CART ROUTES
+// ============================
+
+app.post("/api/cart/add", apiAuthMiddleware, async (req, res) => {
+    try {
+        const { productKey, name, price, image } = req.body;
+
+        if (!productKey || !name || price === undefined) {
+            return res.status(400).json({ success: false, message: "Invalid product data" });
+        }
+
+        const normalizedPrice = Number(price);
+
+        if (Number.isNaN(normalizedPrice) || normalizedPrice < 0) {
+            return res.status(400).json({ success: false, message: "Invalid price" });
+        }
+
+        const existingItem = await Cart.findOne({
+            userId: String(req.user.id),
+            productKey
+        });
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+            await existingItem.save();
+        } else {
+            await Cart.create({
+                userId: String(req.user.id),
+                productKey,
+                name,
+                price: normalizedPrice,
+                image: image || "",
+                quantity: 1
+            });
+        }
+
+        const cartItems = await Cart.find({ userId: String(req.user.id) });
+        const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+        return res.json({
+            success: true,
+            itemCount,
+            totalAmount
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ success: false, message: "Failed to add to cart" });
+    }
+});
+
+app.get("/api/cart/summary", apiAuthMiddleware, async (req, res) => {
+    try {
+        const cartItems = await Cart.find({ userId: String(req.user.id) });
+        const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+        return res.json({
+            success: true,
+            itemCount,
+            totalAmount
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ success: false, message: "Failed to fetch cart summary" });
+    }
+});
+
+app.get("/api/cart/items", apiAuthMiddleware, async (req, res) => {
+    try {
+        const items = await Cart.find({ userId: String(req.user.id) }).sort({ createdAt: -1 });
+        return res.json({ success: true, items });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ success: false, message: "Failed to fetch cart items" });
+    }
+});
+
+app.get("/cart", authMiddleware, async (req, res) => {
+    try {
+        const items = await Cart.find({ userId: String(req.user.id) }).sort({ createdAt: -1 });
+        const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+        const totalAmount = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+        res.render("cart", {
+            items,
+            totalItems,
+            totalAmount
+        });
+    } catch (err) {
+        console.log(err);
+        res.send("Error occurred");
+    }
+});
 
 // ============================
 // SERVER
