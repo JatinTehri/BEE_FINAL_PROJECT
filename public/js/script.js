@@ -69,6 +69,7 @@ const ensureWishlistIcons = () => {
 };
 
 const syncWishlistIcons = () => {
+    ensureWishlistIcons();
     document.querySelectorAll(".wishlist-icon").forEach((wishlistContainer) => {
         const icon = wishlistContainer.querySelector("i");
         if (!icon) return;
