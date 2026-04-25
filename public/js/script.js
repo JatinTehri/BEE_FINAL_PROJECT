@@ -230,6 +230,7 @@ if (searchForm && searchIcon && searchInput) {
     searchInput.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
             searchInput.classList.remove("active");
+            searchInput.value = "";
             searchInput.blur();
         }
     });

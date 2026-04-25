@@ -145,6 +145,7 @@ const PRODUCT_KEY_MAX_LENGTH = 200;
 const PRODUCT_NAME_MAX_LENGTH = 200;
 const PRODUCT_IMAGE_MAX_LENGTH = 2000;
 const SEARCH_QUERY_MAX_LENGTH = 100;
+const SEARCH_CARD_REGEX = /<div class="product-card"[\s\S]*?<div class="product-info">[\s\S]*?<\/div>\s*<\/div>/g;
 const STRONG_PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
 const STRONG_PASSWORD_ERROR = "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.";
 const SEARCHABLE_PRODUCT_PAGES = [
@@ -161,14 +162,13 @@ const cleanText = (value = "") => normalizeWhitespace(value.replace(/<[^>]*>/g, 
 
 const extractProductsFromTemplate = (templatePath, route, category) => {
     const templateContent = fs.readFileSync(templatePath, "utf8");
-    const productCardRegex = /<div class="product-card"[\s\S]*?<\/div>\s*<\/div>/g;
-    const cards = [...templateContent.matchAll(productCardRegex)];
+    const cards = [...templateContent.matchAll(SEARCH_CARD_REGEX)];
 
     return cards
         .map((card) => {
             const cardHtml = card[0];
             const name = cleanText(cardHtml.match(/class="product-name"[^>]*>([\s\S]*?)<\/(?:div|p)>/)?.[1] || "");
-            const brand = cleanText(cardHtml.match(/class="brand"[^>]*>([\s\S]*?)<\/(?:div|h4)>/)?.[1] || "VYBE");
+            const brand = cleanText(cardHtml.match(/class="brand"[^>]*>([\s\S]*?)<\/(?:div|h4)>/)?.[1] || "");
             const price = cleanText(cardHtml.match(/class="product-price"[^>]*>([\s\S]*?)<\/div>/)?.[1] || "");
             const image = cardHtml.match(/<img[^>]*src="([^"]+)"/)?.[1] || "";
 
