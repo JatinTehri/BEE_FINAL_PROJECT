@@ -11,7 +11,11 @@ const attachUser = require("./middleware/setUser");
 const routes = require("./routes");
 
 const app = express();
-const sessionSecret = process.env.SESSION_SECRET || "googleAuthSecret";
+const sessionSecret = process.env.SESSION_SECRET;
+
+if (!sessionSecret) {
+    throw new Error("SESSION_SECRET is required to start the server.");
+}
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

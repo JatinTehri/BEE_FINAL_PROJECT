@@ -3,7 +3,11 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const User = require("../models/User");
 
 const configurePassport = () => {
-    const callbackURL = process.env.GOOGLE_CALLBACK_URL || "http://localhost:3000/auth/google/callback";
+    const callbackURL = process.env.GOOGLE_CALLBACK_URL;
+
+    if (!callbackURL) {
+        throw new Error("GOOGLE_CALLBACK_URL is required to configure Google OAuth.");
+    }
 
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
