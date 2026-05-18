@@ -12,9 +12,23 @@ const routes = require("./routes");
 
 const app = express();
 const sessionSecret = process.env.SESSION_SECRET;
+const jwtSecret = process.env.JWT_SECRET;
+const mongoUri = process.env.MONGO_URI;
 
 if (!sessionSecret) {
     throw new Error("SESSION_SECRET is required to start the server.");
+}
+
+if (sessionSecret.length < 32) {
+    throw new Error("SESSION_SECRET must be at least 32 characters long.");
+}
+
+if (!jwtSecret) {
+    throw new Error("JWT_SECRET is required to start the server.");
+}
+
+if (!mongoUri) {
+    throw new Error("MONGO_URI is required to start the server.");
 }
 
 app.use(express.urlencoded({ extended: true }));
