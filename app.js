@@ -11,6 +11,7 @@ const attachUser = require("./middleware/setUser");
 const routes = require("./routes");
 
 const app = express();
+const sessionSecret = process.env.SESSION_SECRET || "googleAuthSecret";
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,7 +20,7 @@ app.use("/uploads", express.static("uploads"));
 app.use(cookieParser());
 
 app.use(session({
-    secret: "googleAuthSecret",
+    secret: sessionSecret,
     resave: false,
     saveUninitialized: false
 }));
